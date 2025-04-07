@@ -23,8 +23,15 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-item.show .nav-link {
+            color: #fff;
+            background-color: #a4123f;
+            border-color: #a4123f #a4123f #a4123f;
+        }
+
         .blur-card {
-            background: rgba(75, 75, 75, 0.603);
+            background: rgba(27, 26, 26, 0.603);
             border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem;
@@ -44,12 +51,16 @@
             outline: none !important;
         }
 
+        .nav-tabs {
+            border: none !important;
+        }
+
         .blur-button {
             position: relative;
             padding: 4px 30px;
             font-size: 18px;
             color: white;
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(0, 0, 0, 0.384);
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -97,7 +108,10 @@
             border-radius: 50px !important;
         }
 
-      
+        .nav-tabs .nav-link {
+            border-radius: 12px !important;
+            margin: 4px;
+        }
 
         /* Improved responsive styles */
         /* Base Styles (Mobile First) */
@@ -112,7 +126,7 @@
 
         .custom-lg-width {
             border-radius: 15px;
-            width: 100%; /* Default full width for small screens */
+            width: 100%;
         }
 
         .form-control {
@@ -125,6 +139,7 @@
             .large-only-margin {
                 margin-left: 10px !important;
                 margin-top: 30px !important;
+                height: 652px !important;
             }
 
             .fact {
@@ -137,6 +152,7 @@
             .large-only-margin {
                 margin-left: 15px !important;
                 margin-top: 40px !important;
+                height: 652px !important;
             }
 
             .fact {
@@ -153,12 +169,13 @@
             .large-only-margin {
                 margin-left: 25px !important;
                 margin-top: 60px !important;
+                height: 652px !important;
             }
 
             .fact {
                 margin-left: 60px !important;
             }
-            
+
             .container-fluid {
                 padding-left: 30px;
                 padding-right: 30px;
@@ -174,17 +191,18 @@
             .large-only-margin {
                 margin-left: 30px !important;
                 margin-top: 70px !important;
+                height: 652px !important;
             }
 
             .fact {
                 margin-left: 60px !important;
             }
-            
+
             .container-fluid {
                 padding-left: 50px;
                 padding-right: 50px;
             }
-            
+
             .hero-wrap {
                 min-height: 100vh;
             }
@@ -200,12 +218,13 @@
                 margin-left: 40px !important;
                 margin-top: 100px !important;
                 margin-right: 10px !important;
+                height: 652px !important;
             }
 
             .fact {
                 margin-left: 80px !important;
             }
-            
+
             .container-fluid {
                 padding-left: 80px;
                 padding-right: 80px;
@@ -221,12 +240,13 @@
             .large-only-margin {
                 margin-left: 50px !important;
                 margin-top: 150px !important;
+                height: 652px !important;
             }
 
             .fact {
                 margin-left: 100px !important;
             }
-            
+
             .container-fluid {
                 padding-left: 100px;
                 padding-right: 100px;
@@ -261,7 +281,7 @@
                 margin-right: 50px !important;
             }
         }
-        
+
         /* Additional laptop-specific styles */
         @media (min-width: 992px) and (max-width: 1399px) {
             .hero-wrap {
@@ -269,20 +289,20 @@
                 align-items: center;
                 min-height: 100vh;
             }
-            
+
             .row.content-row {
                 width: 100%;
                 display: flex;
                 align-items: center;
             }
-            
+
             .form-panel {
                 display: flex;
                 justify-content: flex-end;
                 height: 100%;
             }
         }
-        
+
         /* Mobile menu adjustments */
         @media (max-width: 768px) {
             .head-mobile {
@@ -295,6 +315,62 @@
                 display: none !important;
             }
         }
+
+        /* Base Transitions */
+        .img-log,
+        .head-size {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Optional: Smooth scaling effect for image */
+        .img-log {
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        /* Text style enhancements */
+        .head-size {
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
+        }
+
+        /* Media Queries */
+        @media screen and (min-width: 768px) {
+            .img-log {
+                width: 90px !important;
+            }
+
+            .head-size {
+                font-size: 15px !important;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .img-log {
+                width: 110px !important;
+                transform: scale(1.05);
+            }
+
+            .head-size {
+                font-size: 15px !important;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+            }
+        }
+
+        @media screen and (min-width: 1280px) {
+            .img-log {
+                width: 140px !important;
+                transform: scale(1.08);
+            }
+
+            .head-size {
+                font-size: 19px !important;
+                font-weight: 500;
+                letter-spacing: 0.6px;
+            }
+        }
     </style>
 </head>
 
@@ -302,8 +378,10 @@
     <nav class="d-none d-lg-block navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar">
         <div class="container">
-            <h4 id="navbar-heading" class="nav-item" style="color: white; font-weight: 500;">Amrita Online Admissions
-                Portal</h4>
+            <h5 id="navbar-heading" class="nav-item" style="color: white; font-weight: 500; ">
+                <img src="assets/amrita _logo.png" alt="" class="img-log">
+                <span class="head-size ml-3">Amrita Online Admissions Portal</span>
+            </h5>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -322,293 +400,238 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar d-lg-none d-block p-3"
-        style="background: transparent !important; background-color: transparent !important;">
+    <nav class="navbar d-lg-none d-block p-3" style="background: #A4123F; background-color: #A4123F !important;">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <i data-lucide="align-left" style="color: black;"></i>
+                <i data-lucide="align-left" style="color: #ffff;"></i>
                 <h5 id="navbar-heading" class="nav-item m-0 p-0"
-                    style="color: black; font-weight: 500; margin-left: 10px;">Amrita Online Admissions</h5>
+                    style="color: rgb(255, 255, 255); font-weight: 500; margin-left: 10px;">
+                    <img src="assets/logo-sm.png" alt="" width="50">
+                    <span style="font-size: 18px;">Amrita Online Admissions</span>
+                </h5>
             </div>
-            <i data-lucide="log-out" class="ml-2" style="color: black;"></i>
+            <i data-lucide="log-out" class="ml-2" style="color: #ffff;"></i>
         </div>
     </nav>
 
     <!-- END nav -->
-  <div class="row">
-    <div class="hero-wrap js-fullheight" style="background-image: url('assets/bg-1.png');">
-        <div class="container-fluid">
-            <div class="row content-row large-only-margin">
-                <!-- Left Column - Information -->
-                <div class="col-md-6 col-12">
-                    <div class="ftco-animate fact">
-                        <span class="subheading text-white">Welcome to Amrita Vishwa Vidyapeetham</span>
-                        <h1 class="mb-4 text-white">UG Admissions 2025</h1>
-                        <p class="caps text-white">LET YOUR SUCCESS STORY
-                            START WITH AMRITA</p>
-                        <p class="mb-0"><a href="#" class="btn btn-primary">Programs Offered by Campuses</a></p>
-
-                        <!-- Campus Selection Tabs -->
-                        <ul class="nav nav-pills mb-3 mt-4 g-2" id="pills-tab" role="tablist">
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="nav-link blur-button" id="pills-profile-tab" data-toggle="pill"
-                                    data-target="#pills-profile" type="button" role="tab"
-                                    aria-controls="pills-profile" aria-selected="false">
-                                    <i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Amritapuri</span>
-                                </button>
-                            </li>
-
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-contact-tab" data-toggle="pill"
-                                    data-target="#pills-contact" type="button" role="tab"
-                                    aria-controls="pills-contact" aria-selected="false">
-                                    <i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Coimbatore</span>
-                                </button>
-                            </li>
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-kochi-tab" data-toggle="pill"
-                                    data-target="#pills-kochi" type="button" role="tab"
-                                    aria-controls="pills-kochi" aria-selected="false">
-                                    <i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Kochi</span>
-                                </button>
-                            </li>
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-faridabad-tab" data-toggle="pill"
-                                    data-target="#pills-faridabad" type="button" role="tab"
-                                    aria-controls="pills-faridabad" aria-selected="false">
-                                    <i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Faridabad</span>
-                                </button>
-                            </li>
-                        </ul>
-                        
-                        <!-- Tab Content -->
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                aria-labelledby="pills-home-tab">
-                            </div>
-                            
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                aria-labelledby="pills-profile-tab">
-                                <div class="py-4">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">BSW Honours with Research</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Biotechnology</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Microbiology</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Chemistry</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                aria-labelledby="pills-contact-tab">
-                                <div class="py-4">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Tech Computer Science Engineering</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Tech Electronics Engineering</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Tech Mechanical Engineering</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="pills-kochi" role="tabpanel"
-                                aria-labelledby="pills-kochi-tab">
-                                <div class="py-4">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Tech Computer Science Engineering</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">MBBS</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. Nursing</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="pills-faridabad" role="tabpanel"
-                                aria-labelledby="pills-faridabad-tab">
-                                <div class="py-4">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Tech Computer Science & AI</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Com (Hons.)</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-2">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">BBA</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column - Registration Form -->
-                <div class="col-md-6 col-12 form-panel">
-                    <div class="d-flex justify-content-center justify-content-md-end">
-                        <div class="card p-4 custom-lg-width right-card">
-                            <div class="card-body">
-                                <h3 class="mb-4 text-primary">Register Now</h3>
-                                <form action="#" class="signup-form">
-                                    <!-- Full Name -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Enter your Name">
-                                    </div>
-
-                                    <!-- Email -->
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="email"
-                                            placeholder="Enter your Email">
-                                    </div>
-
-                                    <!-- Mobile -->
-                                    <div class="form-group">
-                                        <input type="tel" class="form-control" id="mobile"
-                                            placeholder="Enter your Mobile">
-                                        <small class="form-text text-danger">
-                                            An OTP will be sent to this number for verification in the next
-                                            step
-                                        </small>
-                                    </div>
-
-                                    <!-- State -->
-                                    <div class="form-group">
-                                        <select id="state" class="form-control">
-                                            <option value="" selected>Select State</option>
-                                            <option value="kerala">Kerala</option>
-                                            <option value="tamilnadu">Tamil Nadu</option>
-                                            <option value="karnataka">Karnataka</option>
-                                            <option value="maharashtra">Maharashtra</option>
-                                            <option value="delhi">Delhi</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- District -->
-                                    <div class="form-group">
-                                        <select id="district" class="form-control">
-                                            <option value="" selected>Select District</option>
-                                            <option value="ernakulam">Ernakulam</option>
-                                            <option value="coimbatore">Coimbatore</option>
-                                            <option value="bengaluru">Bengaluru</option>
-                                            <option value="mumbai">Mumbai</option>
-                                            <option value="newdelhi">New Delhi</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Stream -->
-                                    <div class="form-group">
-                                        <select id="stream" class="form-control">
-                                            <option value="" selected>Select Stream</option>
-                                            <option value="science">Science</option>
-                                            <option value="commerce">Commerce</option>
-                                            <option value="arts">Arts</option>
-                                            <option value="engineering">Engineering</option>
-                                            <option value="medical">Medical</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <!-- Submit Button -->
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
-                                    </div>
-                                </form>
-
-                                <p class="text-center mt-3">
-                                    Already have an account? <a href="#signin">Sign In</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           
-        </div>
-        
-    </div>
     <div class="row">
-        <p>lorem*500</p>
+        <div class="hero-wrap " style="background-image: url('assets/bg-1.png'); ">
+            <div class="container-fluid">
+                <div class="row content-row large-only-margin">
+                    <!-- Left Column - Information -->
+                    <div class="col-md-6 col-12">
+                        <div class="ftco-animate fact">
+                            <span class="subheading text-white">Welcome to Amrita Vishwa Vidyapeetham</span>
+                            <h1 class="mb-4 text-white">UG Admissions 2025</h1>
+                            <p class="caps text-white">LET YOUR SUCCESS STORY
+                                START WITH AMRITA</p>
+
+                            <p class="mb-0"><a href="#" class="btn btn-primary">3/4 year UG / Integrated Programmes
+                                    offered in</a></p>
+                                    <!-- <div class="tab-content mt-3" id="customTabContent">
+                                        <div class="tab-pane fade show active text-white" id="physical" role="tabpanel"
+                                            aria-labelledby="physical-tab">
+                                           <span> <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
+                                            <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span></span>
+                                        </div>
+                                        <div class="tab-pane fade text-white" id="social" role="tabpanel"
+                                            aria-labelledby="social-tab">Content for Social Work</div>
+                                        <div class="tab-pane fade text-white" id="computer" role="tabpanel"
+                                            aria-labelledby="computer-tab">Content for Computer Applications</div>
+                                        <div class="tab-pane fade text-white" id="biotech" role="tabpanel"
+                                            aria-labelledby="biotech-tab">Content for Biotechnology</div>
+                                        <div class="tab-pane fade text-white" id="arts" role="tabpanel"
+                                            aria-labelledby="arts-tab">Content for Arts, Humanities</div>
+                                        <div class="tab-pane fade text-white" id="commerce" role="tabpanel"
+                                            aria-labelledby="commerce-tab">Content for Commerce</div>
+                                        <div class="tab-pane fade text-white" id="business" role="tabpanel"
+                                            aria-labelledby="business-tab">Content for Business Management</div>
+                                        <div class="tab-pane fade text-white" id="allied" role="tabpanel"
+                                            aria-labelledby="allied-tab">Content for Allied Health Sciences</div>
+                                        <div class="tab-pane fade text-white" id="pharmacy" role="tabpanel"
+                                            aria-labelledby="pharmacy-tab">Content for Pharmacy</div>
+                                        <div class="tab-pane fade text-white" id="nursing" role="tabpanel"
+                                            aria-labelledby="nursing-tab">Content for Nursing</div>
+                                    </div> -->
+                            <!-- Campus Selection Tabs -->
+                            <ul class="nav nav-tabs mt-5" id="customTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active blur-button" id="physical-tab" data-toggle="tab"
+                                        data-target="#physical" type="button" role="tab" aria-controls="physical"
+                                        aria-selected="true">Physical Sciences</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="social-tab" data-toggle="tab"
+                                        data-target="#social" type="button" role="tab" aria-controls="social"
+                                        aria-selected="false">Social Work</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="computer-tab" data-toggle="tab"
+                                        data-target="#computer" type="button" role="tab" aria-controls="computer"
+                                        aria-selected="false">Computer Applications</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="biotech-tab" data-toggle="tab"
+                                        data-target="#biotech" type="button" role="tab" aria-controls="biotech"
+                                        aria-selected="false">Biotechnology</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="arts-tab" data-toggle="tab"
+                                        data-target="#arts" type="button" role="tab" aria-controls="arts"
+                                        aria-selected="false">Arts, Humanities</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="commerce-tab" data-toggle="tab"
+                                        data-target="#commerce" type="button" role="tab" aria-controls="commerce"
+                                        aria-selected="false">Commerce</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="business-tab" data-toggle="tab"
+                                        data-target="#business" type="button" role="tab" aria-controls="business"
+                                        aria-selected="false">Business Management</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="allied-tab" data-toggle="tab"
+                                        data-target="#allied" type="button" role="tab" aria-controls="allied"
+                                        aria-selected="false">Allied Health Sciences</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="pharmacy-tab" data-toggle="tab"
+                                        data-target="#pharmacy" type="button" role="tab" aria-controls="pharmacy"
+                                        aria-selected="false">Pharmacy</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link blur-button" id="nursing-tab" data-toggle="tab"
+                                        data-target="#nursing" type="button" role="tab" aria-controls="nursing"
+                                        aria-selected="false">Nursing</button>
+                                </li>
+                            </ul>
+
+                            
+
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Registration Form -->
+                    <div class="col-md-6 col-12 form-panel">
+                        <div class="d-flex justify-content-center justify-content-md-end">
+                            <div class="card p-4 custom-lg-width right-card">
+                                <div class="card-body">
+                                    <h3 class="mb-4 text-primary">Register Now</h3>
+                                    <form action="#" class="signup-form">
+                                        <!-- Full Name -->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name"
+                                                placeholder="Enter your Name">
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Enter your Email">
+                                        </div>
+
+                                        <!-- Mobile -->
+                                        <div class="form-group">
+                                            <input type="tel" class="form-control" id="mobile"
+                                                placeholder="Enter your Mobile">
+                                            <small class="form-text text-danger">
+                                                An OTP will be sent to this number for verification in the next
+                                                step
+                                            </small>
+                                        </div>
+
+                                        <!-- State -->
+                                        <div class="form-group">
+                                            <select id="state" class="form-control">
+                                                <option value="" selected>Select State</option>
+                                                <option value="kerala">Kerala</option>
+                                                <option value="tamilnadu">Tamil Nadu</option>
+                                                <option value="karnataka">Karnataka</option>
+                                                <option value="maharashtra">Maharashtra</option>
+                                                <option value="delhi">Delhi</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- District -->
+                                        <div class="form-group">
+                                            <select id="district" class="form-control">
+                                                <option value="" selected>Select District</option>
+                                                <option value="ernakulam">Ernakulam</option>
+                                                <option value="coimbatore">Coimbatore</option>
+                                                <option value="bengaluru">Bengaluru</option>
+                                                <option value="mumbai">Mumbai</option>
+                                                <option value="newdelhi">New Delhi</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Stream -->
+                                        <div class="form-group">
+                                            <select id="stream" class="form-control">
+                                                <option value="" selected>Select Stream</option>
+                                                <option value="science">Science</option>
+                                                <option value="commerce">Commerce</option>
+                                                <option value="arts">Arts</option>
+                                                <option value="engineering">Engineering</option>
+                                                <option value="medical">Medical</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                        </div>
+                                    </form>
+
+                                    <p class="text-center mt-3">
+                                        Already have an account? <a href="#signin " class="font-weight-bold">Sign In</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <p>lorem*500</p>
+        </div>
     </div>
-  </div>
-        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script src="js/scrollax.min.js"></script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
-        <script src="js/main.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
 
 
 
-        <!--Abhi Created-->
-        <script>
-            lucide.createIcons();
-            window.addEventListener('scroll', function () {
-                const heading = document.getElementById('navbar-heading');
-                if (window.scrollY > 10) {
-                    heading.style.color = 'black';
-                } else {
-                    heading.style.color = 'white';
-                }
-            });
-        </script>
+    <!--Abhi Created-->
+    <script>
+        lucide.createIcons();
+        window.addEventListener('scroll', function () {
+            const heading = document.getElementById('navbar-heading');
+            if (window.scrollY > 10) {
+                heading.style.color = 'black';
+            } else {
+                heading.style.color = 'white';
+            }
+        });
+    </script>
 
 </body>
 
