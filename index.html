@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>StudyLab - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Admissions</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,10 +23,122 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        .dropdown-mobile {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition:
+                max-height 0.4s ease,
+                opacity 0.4s ease,
+                transform 0.4s ease,
+                padding 0.3s ease;
+            padding: 0 0;
+        }
+
+        /* Active state for smooth reveal */
+        .dropdown-mobile.active {
+            max-height: 500px;
+            /* Enough to show all content */
+            opacity: 1;
+            transform: translateY(0);
+            padding: 10px 0;
+        }
+
+
+        /* Popover st
+        yles */
+        .tab-popover {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 1000;
+            min-width: 250px;
+            max-width: 300px;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            top: -70px;
+            left: 0;
+        }
+
+        #customPopoverNav .nav-item {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #customPopoverNav .nav-item:hover .tab-popover {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Popover arrow */
+        .tab-popover::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 20px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+        }
+
+        /* Adjust blur-button for new navigation */
+        #customPopoverNav .blur-button {
+            position: relative;
+            padding: 4px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.384);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 991px) {
+            #customPopoverNav {
+                display: none !important;
+            }
+        }
+
+        /* Adjust for screen sizes between 991px and 1040px */
+        @media (min-width: 991px) and (max-width: 1040px) {
+            #customPopoverNav .nav-item {
+                margin-right: 5px;
+            }
+
+            #customPopoverNav .blur-button {
+                padding: 4px 15px;
+                font-size: 14px;
+            }
+        }
+
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-item.show .nav-link {
+            color: #fff;
+            background-color: #a4123f;
+            border-color: #a4123f #a4123f #a4123f;
+        }
+
         .blur-card {
-            /* -webkit-backdrop-filter: blur(50px);
-            backdrop-filter: blur(50px); */
-            background: rgba(75, 75, 75, 0.603);
+            background: rgba(27, 26, 26, 0.603);
             border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem;
@@ -46,12 +158,19 @@
             outline: none !important;
         }
 
+        .nav-tabs {
+            border: none !important;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
         .blur-button {
             position: relative;
             padding: 4px 30px;
             font-size: 18px;
             color: white;
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(0, 0, 0, 0.384);
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -99,95 +218,325 @@
             border-radius: 50px !important;
         }
 
-
-
-        .form-group-cust {
-            position: relative;
-            width: 90%;
-            /* Responsive width */
-            max-width: 350px;
-            /* Limit the maximum width */
-            margin: auto;
+        .nav-tabs .nav-link {
+            border-radius: 12px !important;
+            margin: 4px;
         }
 
-        .form-select-cust {
+        /* Hide tabs on screens smaller than laptop */
+        @media (max-width: 991px) {
+            #customTab {
+                display: none !important;
+            }
+        }
+
+        /* Adjust tab sizes for screens between 991px and 1040px */
+        @media (min-width: 991px) and (max-width: 1040px) {
+            #customTab .nav-item {
+                margin-right: 5px;
+            }
+
+            #customTab .blur-button {
+                padding: 4px 15px;
+                font-size: 14px;
+            }
+
+            #customTab {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            #customTab .nav-item.mb-2 {
+                margin-bottom: 8px !important;
+            }
+        }
+
+        /* Improved responsive styles */
+        /* Base Styles (Mobile First) */
+        .large-only-margin {
+            margin-left: 10px !important;
+            margin-top: 30px !important;
+        }
+
+        .fact {
+            margin-left: 10px !important;
+        }
+
+        .custom-lg-width {
+            border-radius: 15px;
             width: 100%;
-            padding: 1.2rem 1.25rem 0.5rem 1.25rem;
-            font-size: 1rem;
-            color: #333;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 40px;
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            appearance: none;
-            cursor: pointer;
-            outline: none;
-            box-sizing: border-box;
-            height: 3.4rem;
         }
 
-        .form-select-cust option {
-            color: #333;
+        .form-control {
+            border: 1px solid #9b9b9b !important;
+            border-radius: 8px !important;
         }
 
-        .form-select-cust option:first-child {
-            color: #333;
-        }
-
-        .form-label-cust {
-            position: absolute;
-            top: 0.4rem;
-            left: 1.3rem;
-            font-size: 0.8rem;
-            color: #c1c1c1;
-            transition: all 0.2s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .form-group-cust::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 1.2rem;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            pointer-events: none;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid #000;
-        }
-
-        /* Optional: Adjust font size and padding for smaller devices */
-        @media (max-width: 480px) {
-            .form-select-cust {
-                font-size: 0.9rem;
-                padding: 1rem 1rem 0.5rem 1rem;
-                height: 3.2rem;
+        /* Extra Small Devices (up to 575px) */
+        @media (max-width: 575px) {
+            .large-only-margin {
+                margin-left: 10px !important;
+                margin-top: 30px !important;
+                height: 652px !important;
             }
 
-            .form-label-cust {
-                font-size: 0.75rem;
-                top: 0.3rem;
-                left: 1rem;
+            .fact {
+                margin-left: 10px !important;
             }
         }
 
+        /* Small Devices (576px to 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .large-only-margin {
+                margin-left: 15px !important;
+                margin-top: 40px !important;
+                height: 652px !important;
+            }
+
+            .fact {
+                margin-left: 15px !important;
+            }
+        }
+
+        /* Medium Devices (768px to 991px) - Tablets and small laptops */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .custom-lg-width {
+                width: 300px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 25px !important;
+                margin-top: 60px !important;
+                height: 652px !important;
+            }
+
+            .fact {
+                margin-left: 60px !important;
+            }
+
+            .container-fluid {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+
+        /* Large Devices (992px to 1199px) - Laptops */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .custom-lg-width {
+                width: 340px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 30px !important;
+                margin-top: 70px !important;
+                height: 652px !important;
+            }
+
+            .fact {
+                margin-left: 60px !important;
+            }
+
+            .container-fluid {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            .hero-wrap {
+                min-height: 100vh;
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+
+            .blur-button {
+                font-size: 16px;
+                padding: 4px 25px;
+            }
+        }
+
+        /* Extra Large Devices (1200px to 1399px) - Large laptops */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .custom-lg-width {
+                width: 360px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 40px !important;
+                margin-top: 100px !important;
+                margin-right: 10px !important;
+                height: 652px !important;
+            }
+
+            .fact {
+                margin-left: 80px !important;
+            }
+
+            .container-fluid {
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+        }
+
+        /* 2XL Screens (1400px and above) - Large displays */
+        @media (min-width: 1400px) {
+            .custom-lg-width {
+                width: 387px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 50px !important;
+                margin-top: 150px !important;
+                height: 652px !important;
+            }
+
+            .fact {
+                margin-left: 100px !important;
+            }
+
+            .container-fluid {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+        }
+
+        /* Right card positioning */
+        .right-card {
+            margin-right: 10px !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .right-card {
+                margin-right: 20px !important;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .right-card {
+                margin-right: 30px !important;
+            }
+        }
+
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .right-card {
+                margin-right: 40px !important;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .right-card {
+                margin-right: 50px !important;
+            }
+        }
+
+        /* Additional laptop-specific styles */
+        @media (min-width: 992px) and (max-width: 1399px) {
+            .hero-wrap {
+                display: flex;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .row.content-row {
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .form-panel {
+                display: flex;
+                justify-content: flex-end;
+                height: 100%;
+            }
+        }
+
+        /* Mobile menu adjustments */
         @media (max-width: 768px) {
             .head-mobile {
-                margin-left: 50px !important;
+                margin-left: 20px !important;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .nav-show {
+                display: none !important;
+            }
+        }
+
+        /* Base Transitions */
+        .img-log,
+        .head-size {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Optional: Smooth scaling effect for image */
+        .img-log {
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        /* Text style enhancements */
+        .head-size {
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
+        }
+
+        /* Media Queries */
+        @media screen and (min-width: 768px) {
+            .img-log {
+                width: 90px !important;
+            }
+
+            .head-size {
+                font-size: 15px !important;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .img-log {
+                width: 110px !important;
+                transform: scale(1.05);
+            }
+
+            .head-size {
+                font-size: 15px !important;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+            }
+        }
+
+        @media screen and (min-width: 1280px) {
+            .img-log {
+                width: 140px !important;
+                transform: scale(1.08);
+            }
+
+            .head-size {
+                font-size: 19px !important;
+                font-weight: 500;
+                letter-spacing: 0.6px;
             }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="d-none d-lg-block navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+        id="ftco-navbar">
         <div class="container">
-            <h4 id="navbar-heading" class="nav-item" style="color: white; font-weight: 500;">Amrita Online Admissions
-                Portal</h4>
+            <h5 id="navbar-heading" class="nav-item" style="color: white; font-weight: 500; ">
+                <img src="assets/amrita _logo.png" alt="" class="img-log">
+                <span class="head-size ml-4">Amrita Online Admissions Portal</span>
+            </h5>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -196,7 +545,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="course.html" class="nav-link">Course</a></li>
                     <li class="nav-item"><a href="instructor.html" class="nav-link">Instructor</a></li>
@@ -206,839 +555,318 @@
             </div>
         </div>
     </nav>
+    <nav class="navbar d-lg-none d-block p-3" style="background: #A4123F;">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <h5 id="navbar-heading" class="nav-item m-0 p-0 text-white fw-medium ms-2">
+                    <img src="assets/logo-sm.png" alt="" width="50">
+                    <span style="font-size: 18px;">Amrita Online Admissions</span>
+                </h5>
+            </div>
+            <i id="menu-toggle" data-lucide="align-right" style="color: #fff; cursor: pointer;"></i>
+        </div>
+
+        <!-- Accordion Dropdown -->
+        <div class="dropdown-mobile text-end">
+            <ul class="list-unstyled m-0 px-2">
+                <li><a href="#" class="text-white d-block py-2">Home</a></li>
+                <li><a href="#" class="text-white d-block py-2">Admissions</a></li>
+                <li><a href="#" class="text-white d-block py-2">Programs</a></li>
+                <li><a href="#" class="text-white d-block py-2">Contact</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
 
     <!-- END nav -->
     <div class="row">
-        <div class="hero-wrap js-fullheight" style="background-image: url('assets/bg-1.png');">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text  align-items-center head-mobile" data-scrollax-parent="true"
-                    style="margin-top: 110px;">
-                    <div class="col-md-7 ftco-animate">
-                        <span class="subheading">Welcome to Amrita Vishwa Vidyapeetham</span>
-                        <h1 class="mb-4">UG Admissions 2025</h1>
-                        <p class="caps">LET YOUR SUCCESS STORY
-                            START WITH AMRITA</p>
-                        <p class="mb-0"><a href="#" class="btn btn-primary">Programs Offered by Campuses</a> </p>
-                        <!-- <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse"
-                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Amritapuri
-                                        </button>
-                                    </h2>
-                                </div>
+        <div class="hero-wrap" style="background-image: url('assets/bg-1.png'); min-height: 100vh;">
+            <div class="container-fluid">
+                <div class="row content-row large-only-margin">
+                    <!-- Left Column - Information -->
+                    <div class="col-md-6 col-12">
+                        <div class="ftco-animate fact">
+                            <span class="subheading text-white">Welcome to Amrita Vishwa Vidyapeetham</span>
+                            <h1 class="mb-4 text-white">UG Admissions 2025</h1>
+                            <p class="caps text-white">LET YOUR SUCCESS STORY
+                                START WITH AMRITA</p>
 
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        Some placeholder content for the first accordion panel. This panel is shown by
-                                        default, thanks to the <code>.show</code> class.
+                            <span class="d-none d-md-block">
+                                <p class="mb-0"><a href="#" class="btn btn-primary ">3/4 year UG / Integrated Programmes
+                                        offered in</a></p>
+                            </span>
+                            <!-- <div class="tab-content mt-3" id="customTabContent d-none d-md-block">
+
+                                <div class="tab-pane fade text-white" id="social" role="tabpanel"
+                                    aria-labelledby="social-tab">Content for Social Work</div>
+                                <div class="tab-pane fade text-white" id="computer" role="tabpanel"
+                                    aria-labelledby="computer-tab">Content for Computer Applications</div>
+                                <div class="tab-pane fade text-white" id="biotech" role="tabpanel"
+                                    aria-labelledby="biotech-tab">Content for Biotechnology</div>
+                                <div class="tab-pane fade text-white" id="arts" role="tabpanel"
+                                    aria-labelledby="arts-tab">Content for Arts, Humanities</div>
+                                <div class="tab-pane fade text-white" id="commerce" role="tabpanel"
+                                    aria-labelledby="commerce-tab">Content for Commerce</div>
+                                <div class="tab-pane fade text-white" id="business" role="tabpanel"
+                                    aria-labelledby="business-tab">Content for Business Management</div>
+                                <div class="tab-pane fade text-white" id="allied" role="tabpanel"
+                                    aria-labelledby="allied-tab">Content for Allied Health Sciences</div>
+                                <div class="tab-pane fade text-white" id="pharmacy" role="tabpanel"
+                                    aria-labelledby="pharmacy-tab">Content for Pharmacy</div>
+                                <div class="tab-pane fade text-white" id="nursing" role="tabpanel"
+                                    aria-labelledby="nursing-tab">Content for Nursing</div>
+                            </div> -->
+                            <!-- Campus Selection Tabs -->
+                            <!-- Replace your existing tab navigation code with this -->
+                            <ul class="nav mt-5 flex-wrap d-none d-lg-block" id="customPopoverNav">
+                                <li class="nav-item mb-2">
+                                    <button class="navlink blur-button"
+                                        data-content="5 Year Integrated M.Sc. Chemistry">Physical Sciences</button>
+                                    <div class="tab-popover">
+                                        <span><i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
+                                            <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span></span>
                                     </div>
-                                </div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Social Work">Social
+                                        Work</button>
+                                    <div class="tab-popover">Content for Social Work</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button"
+                                        data-content="Content for Computer Applications">Computer Applications</button>
+                                    <div class="tab-popover">Content for Computer Applications</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button"
+                                        data-content="Content for Biotechnology">Biotechnology</button>
+                                    <div class="tab-popover">Content for Biotechnology</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Arts, Humanities">Arts,
+                                        Humanities</button>
+                                    <div class="tab-popover">Content for Arts, Humanities</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Commerce">Commerce</button>
+                                    <div class="tab-popover">Content for Commerce</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Business Management">Business
+                                        Management</button>
+                                    <div class="tab-popover">Content for Business Management</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Allied Health Sciences">Allied
+                                        Health Sciences</button>
+                                    <div class="tab-popover">Content for Allied Health Sciences</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Pharmacy">Pharmacy</button>
+                                    <div class="tab-popover">Content for Pharmacy</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="Content for Nursing">Nursing</button>
+                                    <div class="tab-popover">Content for Nursing</div>
+                                </li>
+                            </ul>
 
-                            </div>
-                        </div> -->
-                        <ul class="nav nav-pills mb-3 mt-4 g-2" id="pills-tab" role="tablist">
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="nav-link blur-button" id="pills-profile-tab" data-toggle="pill"
-                                    data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                    aria-selected="false"><i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Amritapuri</span></button>
-                            </li>
-                              <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-contact-tab" data-toggle="pill"
-                                    data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                    aria-selected="false"><i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Coimbatore</span></button>
-                            </li>
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-contact-tab" data-toggle="pill"
-                                    data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                    aria-selected="false"><i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Kochi</span></button>
-                            </li>
-                            <li class="nav-item mb-3 mr-3" role="presentation">
-                                <button class="blur-button" id="pills-contact-tab" data-toggle="pill"
-                                    data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                    aria-selected="false"><i data-lucide="map-pin" style="height: 1.3rem;"></i>
-                                    <span>Faridabad</span></button>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                aria-labelledby="pills-home-tab">
-                                <!-- <div class="container py-5">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span>
-                                            </li>
-                                           
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">BSW Honours with Research</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Biotechnology</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Microbiology</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Chemistry</span>
-                                              </li>
-                                        </ul>
-                                    </div> -->
-                                </div>
 
-                            </div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                aria-labelledby="pills-profile-tab"> <div class="container py-5">
-                                    <div class="blur-card">
-                                        <ul class="text-white mb-0">
-                                            <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span>
-                                            </li>
-                                           
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">BSW Honours with Research</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Biotechnology</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Microbiology</span>
-                                              </li>
-                                              <li class="d-flex align-items-center">
-                                                <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                                <span class="ml-2">B.Sc. (Hons.) Chemistry</span>
-                                              </li>
-                                        </ul>
-                                    </div>
-                                </div>
-</div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                aria-labelledby="pills-contact-tab">...</div>
+
                         </div>
-
-
-
-                        <!--ENd-->
                     </div>
 
+                    <!-- Right Column - Registration Form -->
+                    <div class="col-md-6 col-12 form-panel">
+                        <div class="d-flex justify-content-center justify-content-md-end">
+                            <div class="card p-4 custom-lg-width right-card ">
+                                <div class="card-body">
+                                    <h3 class="mb-4 text-primary">Register Now</h3>
+                                    <form action="#" class="signup-form">
+                                        <!-- Full Name -->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name"
+                                                placeholder="Enter your Name">
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Enter your Email">
+                                        </div>
+
+                                        <!-- Mobile -->
+                                        <div class="form-group">
+                                            <input type="tel" class="form-control" id="mobile"
+                                                placeholder="Enter your Mobile">
+                                            <small class="form-text text-danger">
+                                                An OTP will be sent to this number for verification in the next
+                                                step
+                                            </small>
+                                        </div>
+
+                                        <!-- State -->
+                                        <div class="form-group">
+                                            <select id="state" class="form-control">
+                                                <option value="" selected>Select State</option>
+                                                <option value="kerala">Kerala</option>
+                                                <option value="tamilnadu">Tamil Nadu</option>
+                                                <option value="karnataka">Karnataka</option>
+                                                <option value="maharashtra">Maharashtra</option>
+                                                <option value="delhi">Delhi</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- District -->
+                                        <div class="form-group">
+                                            <select id="district" class="form-control">
+                                                <option value="" selected>Select District</option>
+                                                <option value="ernakulam">Ernakulam</option>
+                                                <option value="coimbatore">Coimbatore</option>
+                                                <option value="bengaluru">Bengaluru</option>
+                                                <option value="mumbai">Mumbai</option>
+                                                <option value="newdelhi">New Delhi</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Stream -->
+                                        <div class="form-group">
+                                            <select id="stream" class="form-control">
+                                                <option value="" selected>Select Stream</option>
+                                                <option value="science">Science</option>
+                                                <option value="commerce">Commerce</option>
+                                                <option value="arts">Arts</option>
+                                                <option value="engineering">Engineering</option>
+                                                <option value="medical">Medical</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                        </div>
+                                    </form>
+
+                                    <p class="text-center mt-3">
+                                        Already have an account? <a href="#signin " class="font-weight-bold">Sign In</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
         </div>
-
-        <section class="ftco-section ftco-no-pb ftco-no-pt">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7"></div>
-                    <div class="col-md-5 order-md-last">
-                        <div class="login-wrap p-4 p-md-5">
-                            <h3 class="mb-4 text-primar">Register Now</h3>
-                            <form action="#" class="signup-form">
-                                <div class="form-group">
-                                    <label class="label" for="name">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your Name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="label" for="name">Email</label>
-                                    <input type="text" class="form-control" placeholder="Enter your Email">
-                                </div>
-                                <div class="form-group">
-                                    <label class="label" for="name">Mobile</label>
-                                    <input type="text" class="form-control" placeholder="Enter your Mobile">
-                                    <span class="text-danger " style="font-size: small;">An OTP will be sent to this
-                                        number for verification in
-                                        the next step</span>
-                                </div>
-                                <!-- Select State -->
-                                <div class="form-group-cust mb-3">
-
-                                    <select id="state-cust" class="form-select-cust">
-                                        <option value="" selected>Select State</option>
-                                        <option value="kerala">Kerala</option>
-                                        <option value="tamilnadu">Tamil Nadu</option>
-                                        <option value="karnataka">Karnataka</option>
-                                        <option value="maharashtra">Maharashtra</option>
-                                        <option value="delhi">Delhi</option>
-                                    </select>
-                                </div>
-
-                                <!-- Select District -->
-                                <div class="form-group-cust mb-3">
-
-                                    <select id="district-cust" class="form-select-cust">
-                                        <option value="" selected>Select District</option>
-                                        <option value="ernakulam">Ernakulam</option>
-                                        <option value="coimbatore">Coimbatore</option>
-                                        <option value="bengaluru">Bengaluru</option>
-                                        <option value="mumbai">Mumbai</option>
-                                        <option value="newdelhi">New Delhi</option>
-                                    </select>
-                                </div>
-
-                                <!-- Select Stream -->
-                                <div class="form-group-cust mb-3">
-
-                                    <select id="stream-cust" class="form-select-cust">
-                                        <option value="" selected>Select Stream</option>
-                                        <option value="science">Science</option>
-                                        <option value="commerce">Commerce</option>
-                                        <option value="arts">Arts</option>
-                                        <option value="engineering">Engineering</option>
-                                        <option value="medical">Medical</option>
-                                    </select>
-                                </div>
-                            </form>
-                            <p class="text-center">Already have an account? <a href="#signin">Sign In</a></p>
+        <div class="row ftco-section bg-light">
+        
+                <div class="container">
+                   <div class="row justify-content-center pb-4">
+                       <div class="col-md-12 heading-section text-center ftco-animate">
+                           <span class="subheading">Campuses</span>
+                         <h2 class="mb-4">Pick Your Campus</h2>
+                     </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-4 ftco-animate">
+                       <div class="project-wrap">
+                          <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
+                             <span class="price">Software</span>
+                         </a>
+                         <div class="text p-4">
+                             <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                             <p class="advisor">Advisor <span>Tony Garret</span></p>
+                             <ul class="d-flex justify-content-between">
+                                <li><span class="flaticon-shower"></span>2300</li>
+                                <li class="price">$199</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="col-md-4 ftco-animate">
+                   <div class="project-wrap">
+                      <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
+                         <span class="price">Software</span>
+                     </a>
+                     <div class="text p-4">
+                         <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                         <p class="advisor">Advisor <span>Tony Garret</span></p>
+                         <ul class="d-flex justify-content-between">
+                            <li><span class="flaticon-shower"></span>2300</li>
+                            <li class="price">$199</li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+             <div class="col-md-4 ftco-animate">
+               <div class="project-wrap">
+                  <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
+                     <span class="price">Software</span>
+                 </a>
+                 <div class="text p-4">
+                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                     <p class="advisor">Advisor <span>Tony Garret</span></p>
+                     <ul class="d-flex justify-content-between">
+                        <li><span class="flaticon-shower"></span>2300</li>
+                        <li class="price">$199</li>
+                    </ul>
+                </div>
+             </div>
+             </div>
+             
+             <div class="col-md-4 ftco-animate">
+               <div class="project-wrap">
+                  <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
+                     <span class="price">Software</span>
+                 </a>
+                 <div class="text p-4">
+                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                     <p class="advisor">Advisor <span>Tony Garret</span></p>
+                     <ul class="d-flex justify-content-between">
+                        <li><span class="flaticon-shower"></span>2300</li>
+                        <li class="price">$199</li>
+                    </ul>
+                </div>
+             </div>
+             </div>
+             <div class="col-md-4 ftco-animate">
+               <div class="project-wrap">
+                  <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
+                     <span class="price">Software</span>
+                 </a>
+                 <div class="text p-4">
+                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                     <p class="advisor">Advisor <span>Tony Garret</span></p>
+                     <ul class="d-flex justify-content-between">
+                        <li><span class="flaticon-shower"></span>2300</li>
+                        <li class="price">$199</li>
+                    </ul>
+                </div>
+             </div>
+             </div>
+             <div class="col-md-4 ftco-animate">
+               <div class="project-wrap">
+                  <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
+                     <span class="price">Software</span>
+                 </a>
+                 <div class="text p-4">
+                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                     <p class="advisor">Advisor <span>Tony Garret</span></p>
+                     <ul class="d-flex justify-content-between">
+                        <li><span class="flaticon-shower"></span>2300</li>
+                        <li class="price">$199</li>
+                    </ul>
+                </div>
+             </div>
+             </div>
+             </div>
+             </div>
+           
+             
+        </div>
     </div>
-
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Start Learning Today</span>
-                    <h2 class="mb-4">Browse Online Course Category</h2>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-1.jpg);">
-                        <div class="text w-100 text-center">
-                            <h3>IT &amp; Software</h3>
-                            <span>100 course</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-9.jpg);">
-                        <div class="text w-100 text-center">
-                            <h3>Music</h3>
-                            <span>100 course</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-3.jpg);">
-                        <div class="text w-100 text-center">
-                            <h3>Photography</h3>
-                            <span>100 course</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-5.jpg);">
-                        <div class="text w-100 text-center">
-                            <h3>Marketing</h3>
-                            <span>100 course</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-8.jpg);">
-                        <div class="text w-100 text-center">
-                            <h3>Health</h3>
-                            <span>100 course</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <a href="#" class="course-category img d-flex align-items-center justify-content-center"
-                        style="background-image: url(images/work-6.jpg);">
-                        <span class="text w-100 text-center">
-                            <h3>Audio Video</h3>
-                            <span>100 course</span>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-12 text-center mt-5">
-                    <a href="#" class="btn btn-secondary">See All Courses</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section bg-light">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Start Learning Today</span>
-                    <h2 class="mb-4">Pick Your Course</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
-                            <span class="price">Software</span>
-                        </a>
-                        <div class="text p-4">
-                            <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                            <p class="advisor">Advisor <span>Tony Garret</span></p>
-                            <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-counter img" id="section-counter"
-        style="background-image: url(images/bg_4.jpg);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="icon"><span class="flaticon-online"></span></div>
-                        <div class="text">
-                            <strong class="number" data-number="400">0</strong>
-                            <span>Online Courses</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="icon"><span class="flaticon-graduated"></span></div>
-                        <div class="text">
-                            <strong class="number" data-number="4500">0</strong>
-                            <span>Students Enrolled</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="icon"><span class="flaticon-instructor"></span></div>
-                        <div class="text">
-                            <strong class="number" data-number="1200">0</strong>
-                            <span>Experts Instructors</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="icon"><span class="flaticon-tools"></span></div>
-                        <div class="text">
-                            <strong class="number" data-number="300">0</strong>
-                            <span>Hours Content</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-about img">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-md-12 about-intro">
-                    <div class="row">
-                        <div class="col-md-6 d-flex">
-                            <div class="d-flex about-wrap">
-                                <div class="img d-flex align-items-center justify-content-center"
-                                    style="background-image:url(images/about-1.jpg);">
-                                </div>
-                                <div class="img-2 d-flex align-items-center justify-content-center"
-                                    style="background-image:url(images/about.jpg);">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pl-md-5 py-5">
-                            <div class="row justify-content-start pb-3">
-                                <div class="col-md-12 heading-section ftco-animate">
-                                    <span class="subheading">Enhanced Your Skills</span>
-                                    <h2 class="mb-4">Learn Anything You Want Today</h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                        right at the coast of the Semantics, a large language ocean. A small river named
-                                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    <p><a href="#" class="btn btn-primary">Get in touch with us</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="ftco-section testimony-section bg-light">
-        <div class="overlay" style="background-image: url(images/bg_2.jpg);"></div>
-        <div class="container">
-            <div class="row pb-4">
-                <div class="col-md-7 heading-section ftco-animate">
-                    <span class="subheading">Testimonial</span>
-                    <h2 class="mb-4">What Are Students Says</h2>
-                </div>
-            </div>
-        </div>
-        <div class="container container-2">
-            <div class="row ftco-animate">
-                <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel">
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img"
-                                            style="background-image: url(images/person_1.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img"
-                                            style="background-image: url(images/person_2.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img"
-                                            style="background-image: url(images/person_3.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="text">
-                                    <p class="star">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </p>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-intro ftco-section ftco-no-pb">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12 text-center">
-                    <div class="img" style="background-image: url(images/bg_4.jpg);">
-                        <div class="overlay"></div>
-                        <h2>We Are StudyLab An Online Learning Center</h2>
-                        <p>We can manage your dream building A small river named Duden flows by their place</p>
-                        <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Enroll Now</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section services-section">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-md-6 heading-section pr-md-5 ftco-animate d-flex align-items-center">
-                    <div class="w-100 mb-4 mb-md-0">
-                        <span class="subheading">Welcome to StudyLab</span>
-                        <h2 class="mb-4">We Are StudyLab An Online Learning Center</h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                            It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
-                            Semantics, a large language ocean.</p>
-                        <div class="d-flex video-image align-items-center mt-md-4">
-                            <a href="#" class="video img d-flex align-items-center justify-content-center"
-                                style="background-image: url(images/about.jpg);">
-                                <span class="fa fa-play-circle"></span>
-                            </a>
-                            <h4 class="ml-4">Learn anything from StudyLab, Watch video</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                            <div class="services">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="flaticon-tools"></span></div>
-                                <div class="media-body">
-                                    <h3 class="heading mb-3">Top Quality Content</h3>
-                                    <p>A small river named Duden flows by their place and supplies</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                            <div class="services">
-                                <div class="icon icon-2 d-flex align-items-center justify-content-center"><span
-                                        class="flaticon-instructor"></span></div>
-                                <div class="media-body">
-                                    <h3 class="heading mb-3">Highly Skilled Instructor</h3>
-                                    <p>A small river named Duden flows by their place and supplies</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                            <div class="services">
-                                <div class="icon icon-3 d-flex align-items-center justify-content-center"><span
-                                        class="flaticon-quiz"></span></div>
-                                <div class="media-body">
-                                    <h3 class="heading mb-3">World Class &amp; Quiz</h3>
-                                    <p>A small river named Duden flows by their place and supplies</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                            <div class="services">
-                                <div class="icon icon-4 d-flex align-items-center justify-content-center"><span
-                                        class="flaticon-browser"></span></div>
-                                <div class="media-body">
-                                    <h3 class="heading mb-3">Get Certified</h3>
-                                    <p>A small river named Duden flows by their place and supplies</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="ftco-section bg-light">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Our Blog</span>
-                    <h2 class="mb-4">Recent Post</h2>
-                </div>
-            </div>
-            <div class="row d-flex">
-                <div class="col-lg-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_1.jpg');">
-                        </a>
-                        <div class="text d-block">
-                            <div class="meta">
-                                <p>
-                                    <a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 17, 2020</a>
-                                    <a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
-                                    <a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
-                                </p>
-                            </div>
-                            <h3 class="heading"><a href="#">I'm not creative, Should I take this course?</a></h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia...</p>
-                            <p><a href="blog.html" class="btn btn-secondary py-2 px-3">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_2.jpg');">
-                        </a>
-                        <div class="text d-block">
-                            <div class="meta">
-                                <p>
-                                    <a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 17, 2020</a>
-                                    <a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
-                                    <a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
-                                </p>
-                            </div>
-                            <h3 class="heading"><a href="#">I'm not creative, Should I take this course?</a></h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia...</p>
-                            <p><a href="blog.html" class="btn btn-secondary py-2 px-3">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_3.jpg');">
-                        </a>
-                        <div class="text d-block">
-                            <div class="meta">
-                                <p>
-                                    <a href="#"><span class="fa fa-calendar mr-2"></span>Sept. 17, 2020</a>
-                                    <a href="#"><span class="fa fa-user mr-2"></span>Admin</a>
-                                    <a href="#" class="meta-chat"><span class="fa fa-comment mr-2"></span> 3</a>
-                                </p>
-                            </div>
-                            <h3 class="heading"><a href="#">I'm not creative, Should I take this course?</a></h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia...</p>
-                            <p><a href="blog.html" class="btn btn-secondary py-2 px-3">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <footer class="ftco-footer ftco-no-pt">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md pt-5">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">About</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5">
-                    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
-                        <h2 class="ftco-heading-2">Help Desk</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Customer Care</a></li>
-                            <li><a href="#" class="py-2 d-block">Legal Help</a></li>
-                            <li><a href="#" class="py-2 d-block">Services</a></li>
-                            <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-                            <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
-                            <li><a href="#" class="py-2 d-block">Call Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Recent Courses</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Computer Engineering</a></li>
-                            <li><a href="#" class="py-2 d-block">Web Design</a></li>
-                            <li><a href="#" class="py-2 d-block">Business Studies</a></li>
-                            <li><a href="#" class="py-2 d-block">Civil Engineering</a></li>
-                            <li><a href="#" class="py-2 d-block">Computer Technician</a></li>
-                            <li><a href="#" class="py-2 d-block">Web Developer</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md pt-5">
-                    <div class="ftco-footer-widget pt-md-5 mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain
-                                        View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929
-                                            210</span></a></li>
-                                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-                        is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00" />
-        </svg></div>
-
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -1064,11 +892,39 @@
         lucide.createIcons();
         window.addEventListener('scroll', function () {
             const heading = document.getElementById('navbar-heading');
+            const logo = document.querySelector('.img-log');
+
             if (window.scrollY > 10) {
                 heading.style.color = 'black';
+                logo.src = 'assets/amrita _logo.svg';
             } else {
                 heading.style.color = 'white';
+                logo.src = 'assets/amrita _logo.png';
             }
+        });
+        // Initialize Lucide icons if needed
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+
+            // Optional: Add click behavior if you want something to happen when clicking buttons
+            const popoverButtons = document.querySelectorAll('#customPopoverNav .blur-button');
+            popoverButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // You can add custom click behavior here if needed
+                    // For example, show a modal with more details, etc.
+                    console.log("Button clicked:", this.textContent);
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('menu-toggle');
+            const dropdown = document.querySelector('.dropdown-mobile');
+
+            toggleBtn.addEventListener('click', () => {
+                dropdown.classList.toggle('active');
+            });
         });
     </script>
 
