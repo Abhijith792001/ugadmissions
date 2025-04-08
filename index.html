@@ -36,509 +36,545 @@
     transition: 0.4s ease;
 }
 
-        .dropdown-mobile {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition:
-                max-height 0.4s ease,
-                opacity 0.4s ease,
-                transform 0.4s ease,
-                padding 0.3s ease;
-            padding: 0 0;
-        }
-
-        /* Active state for smooth reveal */
-        .dropdown-mobile.active {
-            max-height: 500px;
-            /* Enough to show all content */
-            opacity: 1;
-            transform: translateY(0);
-            padding: 10px 0;
-        }
-
-
-        /* Popover st
-        yles */
-        .tab-popover {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            color: white;
-            z-index: 1000;
-            min-width: 250px;
-            max-width: 300px;
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            top: -70px;
-            left: 0;
-        }
-
-        #customPopoverNav .nav-item {
-            position: relative;
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        #customPopoverNav .nav-item:hover .tab-popover {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Popover arrow */
-        .tab-popover::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 20px;
-            border-width: 8px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-        }
-
-        /* Adjust blur-button for new navigation */
-        #customPopoverNav .blur-button {
-            position: relative;
-            padding: 4px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.384);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Media query for smaller screens */
-        @media (max-width: 991px) {
-            #customPopoverNav {
-                display: none !important;
-            }
-        }
-
-        /* Adjust for screen sizes between 991px and 1040px */
-        @media (min-width: 991px) and (max-width: 1040px) {
-            #customPopoverNav .nav-item {
-                margin-right: 5px;
-            }
-
-            #customPopoverNav .blur-button {
-                padding: 4px 15px;
-                font-size: 14px;
-            }
-        }
-
-        .nav-tabs .nav-link.active,
-        .nav-tabs .nav-item.show .nav-link {
-            color: #fff;
-            background-color: #a4123f;
-            border-color: #a4123f #a4123f #a4123f;
-        }
-
-        .blur-card {
-            background: rgba(27, 26, 26, 0.603);
-            border-radius: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-
-        .hero-wrap .overlay {
-            background: none;
-        }
-
-        .btn {
-            border-radius: 8px !important;
-        }
-
-        button:focus {
-            outline: none !important;
-        }
-
-        .nav-tabs {
-            border: none !important;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        .blur-button {
-            position: relative;
-            padding: 4px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.384);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .blur-button:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 70%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            transition: all 0.6s ease;
-        }
-
-        .blur-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .blur-button:hover:before {
-            left: 100%;
-        }
-
-        .blur-button:active {
-            transform: translateY(0);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
-            background-color: #a4123f !important;
-            color: #ffffff !important;
-            border: none !important;
-            border-radius: 50px !important;
-        }
-
-        .nav-tabs .nav-link {
-            border-radius: 12px !important;
-            margin: 4px;
-        }
-
-        /* Hide tabs on screens smaller than laptop */
-        @media (max-width: 991px) {
-            #customTab {
-                display: none !important;
-            }
-        }
-
-        /* Adjust tab sizes for screens between 991px and 1040px */
-        @media (min-width: 991px) and (max-width: 1040px) {
-            #customTab .nav-item {
-                margin-right: 5px;
-            }
-
-            #customTab .blur-button {
-                padding: 4px 15px;
-                font-size: 14px;
-            }
-
-            #customTab {
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-
-            #customTab .nav-item.mb-2 {
-                margin-bottom: 8px !important;
-            }
-        }
-
-        /* Improved responsive styles */
-        /* Base Styles (Mobile First) */
-        .large-only-margin {
-            margin-left: 10px !important;
-            margin-top: 30px !important;
-        }
-
-        .fact {
-            margin-left: 10px !important;
-        }
-
-        .custom-lg-width {
-            border-radius: 15px;
-            width: 100%;
-        }
-
-        .form-control {
-            border: 1px solid #9b9b9b !important;
-            border-radius: 8px !important;
-        }
-
-        /* Extra Small Devices (up to 575px) */
-        @media (max-width: 575px) {
-            .large-only-margin {
-                margin-left: 10px !important;
-                margin-top: 30px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 10px !important;
-            }
-        }
-
-        /* Small Devices (576px to 767px) */
-        @media (min-width: 576px) and (max-width: 767px) {
-            .large-only-margin {
-                margin-left: 15px !important;
-                margin-top: 40px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 15px !important;
-            }
-        }
-
-        /* Medium Devices (768px to 991px) - Tablets and small laptops */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .custom-lg-width {
-                width: 300px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 25px !important;
-                margin-top: 60px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 60px !important;
-            }
-
-            .container-fluid {
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-        }
-
-        /* Large Devices (992px to 1199px) - Laptops */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .custom-lg-width {
-                width: 340px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 30px !important;
-                margin-top: 70px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 60px !important;
-            }
-
-            .container-fluid {
-                padding-left: 50px;
-                padding-right: 50px;
-            }
-
-            .hero-wrap {
-                min-height: 100vh;
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-
-            .blur-button {
-                font-size: 16px;
-                padding: 4px 25px;
-            }
-        }
-
-        /* Extra Large Devices (1200px to 1399px) - Large laptops */
-        @media (min-width: 1200px) and (max-width: 1399px) {
-            .custom-lg-width {
-                width: 360px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 40px !important;
-                margin-top: 100px !important;
-                margin-right: 10px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 80px !important;
-            }
-
-            .container-fluid {
-                padding-left: 80px;
-                padding-right: 80px;
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-        }
-
-        /* 2XL Screens (1400px and above) - Large displays */
-        @media (min-width: 1400px) {
-            .custom-lg-width {
-                width: 387px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 50px !important;
-                margin-top: 150px !important;
-                height: 652px !important;
-            }
-
-            .fact {
-                margin-left: 100px !important;
-            }
-
-            .container-fluid {
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-        }
-
-        /* Right card positioning */
-        .right-card {
-            margin-right: 10px !important;
-        }
-
-        @media (min-width: 768px) and (max-width: 991px) {
-            .right-card {
-                margin-right: 20px !important;
-            }
-        }
-
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .right-card {
-                margin-right: 30px !important;
-            }
-        }
-
-        @media (min-width: 1200px) and (max-width: 1399px) {
-            .right-card {
-                margin-right: 40px !important;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .right-card {
-                margin-right: 50px !important;
-            }
-        }
-
-        /* Additional laptop-specific styles */
-        @media (min-width: 992px) and (max-width: 1399px) {
-            .hero-wrap {
-                display: flex;
-                align-items: center;
-                min-height: 100vh;
-            }
-
-            .row.content-row {
-                width: 100%;
-                display: flex;
-                align-items: center;
-            }
-
-            .form-panel {
-                display: flex;
-                justify-content: flex-end;
-                height: 100%;
-            }
-        }
-
-        /* Mobile menu adjustments */
-        @media (max-width: 768px) {
-            .head-mobile {
-                margin-left: 20px !important;
-            }
-        }
-
-        @media (max-width: 991px) {
-            .nav-show {
-                display: none !important;
-            }
-        }
-
-        /* Base Transitions */
-        .img-log,
-        .head-size {
-            transition: all 0.4s ease-in-out;
-        }
-
-        /* Optional: Smooth scaling effect for image */
-        .img-log {
-            display: inline-block;
-            transform-origin: center;
-        }
-
-        /* Text style enhancements */
-        .head-size {
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
-        }
-
-        /* Media Queries */
-        @media screen and (min-width: 768px) {
-            .img-log {
-                width: 90px !important;
-            }
-
-            .head-size {
-                font-size: 15px !important;
-            }
-        }
-
-        @media screen and (min-width: 1024px) {
-            .img-log {
-                width: 110px !important;
-                transform: scale(1.05);
-            }
-
-            .head-size {
-                font-size: 15px !important;
-                font-weight: 400;
-                letter-spacing: 0.4px;
-            }
-        }
-
-        @media screen and (min-width: 1280px) {
-            .img-log {
-                width: 140px !important;
-                transform: scale(1.08);
-            }
-
-            .head-size {
-                font-size: 19px !important;
-                font-weight: 500;
-                letter-spacing: 0.6px;
-            }
-        }
+.dropdown-mobile {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        max-height 0.4s ease,
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        padding 0.3s ease;
+    padding: 0 0;
+}
+
+/* Active state for smooth reveal */
+.dropdown-mobile.active {
+    max-height: 500px;
+    /* Enough to show all content */
+    opacity: 1;
+    transform: translateY(0);
+    padding: 10px 0;
+}
+
+
+/* Popover styles */
+.tab-popover {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    z-index: 1000;
+    min-width: 250px;
+    max-width: 300px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    top: -70px;
+    left: 0;
+}
+
+#customPopoverNav .nav-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#customPopoverNav .nav-item:hover .tab-popover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Popover arrow */
+.tab-popover::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 20px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+/* Adjust blur-button for new navigation */
+#customPopoverNav .blur-button {
+    position: relative;
+    padding: 4px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.384);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 991px) {
+    #customPopoverNav {
+        display: none !important;
+    }
+}
+
+/* Adjust for screen sizes between 991px and 1040px */
+@media (min-width: 991px) and (max-width: 1040px) {
+    #customPopoverNav .nav-item {
+        margin-right: 5px;
+    }
+
+    #customPopoverNav .blur-button {
+        padding: 4px 15px;
+        font-size: 14px;
+    }
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #fff;
+    background-color: #a4123f;
+    border-color: #a4123f #a4123f #a4123f;
+}
+
+.blur-card {
+    background: rgba(27, 26, 26, 0.603);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.hero-wrap .overlay {
+    background: none;
+}
+
+.btn {
+    border-radius: 8px !important;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.nav-tabs {
+    border: none !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.blur-button {
+    position: relative;
+    padding: 4px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.384);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.blur-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transition: all 0.6s ease;
+}
+
+.blur-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.blur-button:hover:before {
+    left: 100%;
+}
+
+.blur-button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #a4123f !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 50px !important;
+}
+
+.nav-tabs .nav-link {
+    border-radius: 12px !important;
+    margin: 4px;
+}
+
+/* Hide tabs on screens smaller than laptop */
+@media (max-width: 991px) {
+    #customTab {
+        display: none !important;
+    }
+}
+
+/* Adjust tab sizes for screens between 991px and 1040px */
+@media (min-width: 991px) and (max-width: 1040px) {
+    #customTab .nav-item {
+        margin-right: 5px;
+    }
+
+    #customTab .blur-button {
+        padding: 4px 15px;
+        font-size: 14px;
+    }
+
+    #customTab {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    #customTab .nav-item.mb-2 {
+        margin-bottom: 8px !important;
+    }
+}
+
+/* Improved responsive styles */
+/* Base Styles (Mobile First) */
+.large-only-margin {
+    margin-left: 10px !important;
+    margin-top: 30px !important;
+}
+
+.fact {
+    margin-left: 10px !important;
+}
+
+.custom-lg-width {
+    border-radius: 15px;
+    width: 100%;
+}
+
+.form-control {
+    border: 1px solid #9b9b9b !important;
+    border-radius: 8px !important;
+}
+
+/* UPDATED: Hero wrap styles with margin bottom to create distance to next section */
+.hero-wrap {
+    min-height: 85vh;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+}
+
+.ftco-section {
+    padding-top: 60px;
+}
+
+/* Extra Small Devices (up to 575px) */
+@media (max-width: 575px) {
+    .large-only-margin {
+        margin-left: 10px !important;
+        margin-top: 30px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 10px !important;
+    }
+
+    .hero-wrap {
+        min-height: 85vh;
+        margin-bottom: 40px;
+    }
+}
+
+/* Small Devices (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .large-only-margin {
+        margin-left: 15px !important;
+        margin-top: 40px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 15px !important;
+    }
+    
+    .hero-wrap {
+        min-height: 85vh;
+        margin-bottom: 50px;
+    }
+}
+
+/* Medium Devices (768px to 991px) - Tablets and small laptops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .custom-lg-width {
+        width: 300px !important;
+    }
+
+    .large-only-margin {
+        margin-left: 25px !important;
+        margin-top: 60px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 60px !important;
+    }
+
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .hero-wrap {
+        min-height: 80vh;
+        margin-bottom: 60px;
+    }
+}
+
+/* Large Devices (992px to 1199px) - Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .custom-lg-width {
+        width: 340px !important;
+    }
+
+    .large-only-margin {
+        margin-left: 30px !important;
+        margin-top: 70px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 60px !important;
+    }
+
+    .container-fluid {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .hero-wrap {
+        min-height: 80vh;
+        margin-bottom: 70px;
+    }
+
+    #customTab {
+        display: flex !important;
+    }
+
+    .blur-button {
+        font-size: 16px;
+        padding: 4px 25px;
+    }
+}
+
+/* Extra Large Devices (1200px to 1399px) - Large laptops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .custom-lg-width {
+        width: 360px !important;
+    }
+
+    .large-only-margin {
+        margin-left: 40px !important;
+        margin-top: 100px !important;
+        margin-right: 10px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 80px !important;
+    }
+
+    .container-fluid {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+    
+    .hero-wrap {
+        min-height: 85vh;
+        margin-bottom: 80px;
+    }
+
+    #customTab {
+        display: flex !important;
+    }
+}
+
+/* 2XL Screens (1400px and above) - Large displays */
+@media (min-width: 1400px) {
+    .custom-lg-width {
+        width: 387px !important;
+    }
+
+    .large-only-margin {
+        margin-left: 50px !important;
+        margin-top: 150px !important;
+        height: 600px !important;
+    }
+
+    .fact {
+        margin-left: 100px !important;
+    }
+
+    .container-fluid {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+    .hero-wrap {
+        min-height: 90vh;
+        margin-bottom: 90px;
+    }
+
+    #customTab {
+        display: flex !important;
+    }
+}
+
+/* Right card positioning */
+.right-card {
+    margin-right: 10px !important;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .right-card {
+        margin-right: 20px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .right-card {
+        margin-right: 30px !important;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .right-card {
+        margin-right: 40px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .right-card {
+        margin-right: 50px !important;
+    }
+}
+
+/* Additional laptop-specific styles */
+@media (min-width: 992px) and (max-width: 1399px) {
+    .hero-wrap {
+        display: flex;
+        align-items: center;
+        min-height: 85vh;
+    }
+
+    .row.content-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-panel {
+        display: flex;
+        justify-content: flex-end;
+        height: 100%;
+    }
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 768px) {
+    .head-mobile {
+        margin-left: 20px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .nav-show {
+        display: none !important;
+    }
+}
+
+/* Base Transitions */
+.img-log,
+.head-size {
+    transition: all 0.4s ease-in-out;
+}
+
+/* Optional: Smooth scaling effect for image */
+.img-log {
+    display: inline-block;
+    transform-origin: center;
+}
+
+/* Text style enhancements */
+.head-size {
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .img-log {
+        width: 90px !important;
+    }
+
+    .head-size {
+        font-size: 15px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .img-log {
+        width: 110px !important;
+        transform: scale(1.05);
+    }
+
+    .head-size {
+        font-size: 15px !important;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .img-log {
+        width: 140px !important;
+        transform: scale(1.08);
+    }
+
+    .head-size {
+        font-size: 19px !important;
+        font-weight: 500;
+        letter-spacing: 0.6px;
+    }
+}
     </style>
 </head>
 
@@ -593,8 +629,8 @@
 
 
     <!-- END nav -->
-    <div class="row">
-        <div class="hero-wrap" style="background-image: url('assets/bg-1.png'); min-height: 100vh;">
+    <div class="row ">
+        <div class="hero-wrap " style="background-image: url('assets/bg-1.png'); min-height: 100vh;">
             <div class="container-fluid">
                 <div class="row content-row large-only-margin">
                     <!-- Left Column - Information -->
@@ -606,73 +642,54 @@
                                 START WITH AMRITA</p>
 
                             <span class="d-none d-md-block">
-                                <p class="mb-0"><a href="#" class="btn btn-primary ">3/4 year UG / Integrated Programmes
+                                <p class="mb-0"><a href="#" class="btn btn-primary d-none d-md-block ">3/4 year UG / Integrated Programmes
                                         offered in</a></p>
                             </span>
-                          
-                            <!-- Replace your existing tab navigation code with this -->
+
                             <ul class="nav mt-5 flex-wrap d-none d-lg-block" id="customPopoverNav">
                                 <li class="nav-item mb-2">
-                                    <button class="navlink blur-button"
+                                    <button class="blur-button"
                                         data-content="5 Year Integrated M.Sc. Chemistry">Physical Sciences</button>
-                                    <div class="tab-popover">
-                                        <ul>
-                                            <li>
-                                              <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                              <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span>
-                                            </li>
-                                            <li>
-                                              <i data-lucide="graduation-cap" style="height: 1.3rem;"></i>
-                                              <span class="ml-2">5 Year Integrated M.Sc. Chemistry</span>
-                                            </li>
-                                          </ul>
-                                          
-                                    </div>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Social Work">Social
+                                    <button class="blur-button" data-content="Programs in Social Work">Social
                                         Work</button>
-                                    <div class="tab-popover">Content for Social Work</div>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <button class="blur-button" data-content="BCA, MCA, and other tech courses">Computer
+                                        Applications</button>
                                 </li>
                                 <li class="nav-item mb-2">
                                     <button class="blur-button"
-                                        data-content="Content for Computer Applications">Computer Applications</button>
-                                    <div class="tab-popover">Content for Computer Applications</div>
+                                        data-content="UG & PG programs in Biotechnology">Biotechnology</button>
                                 </li>
                                 <li class="nav-item mb-2">
                                     <button class="blur-button"
-                                        data-content="Content for Biotechnology">Biotechnology</button>
-                                    <div class="tab-popover">Content for Biotechnology</div>
-                                </li>
-                                <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Arts, Humanities">Arts,
+                                        data-content="Courses in Arts, Literature, and Humanities">Arts,
                                         Humanities</button>
-                                    <div class="tab-popover">Content for Arts, Humanities</div>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Commerce">Commerce</button>
-                                    <div class="tab-popover">Content for Commerce</div>
+                                    <button class="blur-button"
+                                        data-content="Commerce degrees including B.Com, M.Com">Commerce</button>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Business Management">Business
+                                    <button class="blur-button"
+                                        data-content="Business & Management programs like BBA, MBA">Business
                                         Management</button>
-                                    <div class="tab-popover">Content for Business Management</div>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Allied Health Sciences">Allied
+                                    <button class="blur-button" data-content="Programs in Allied Health Sciences">Allied
                                         Health Sciences</button>
-                                    <div class="tab-popover">Content for Allied Health Sciences</div>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Pharmacy">Pharmacy</button>
-                                    <div class="tab-popover">Content for Pharmacy</div>
+                                    <button class="blur-button"
+                                        data-content="B.Pharm, M.Pharm and more">Pharmacy</button>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Content for Nursing">Nursing</button>
-                                    <div class="tab-popover">Content for Nursing</div>
+                                    <button class="blur-button"
+                                        data-content="Courses in Nursing and Healthcare">Nursing</button>
                                 </li>
                             </ul>
-
 
 
                         </div>
@@ -761,111 +778,111 @@
             </div>
 
         </div>
-        <div class="row ftco-section bg-light">
-        
-                <div class="container">
-                   <div class="row justify-content-center pb-4">
-                       <div class="col-md-12 heading-section text-center ftco-animate">
-                           <span class="subheading">Campuses</span>
-                         <h2 class="mb-4">Pick Your Campus</h2>
-                     </div>
-                 </div>
-                 <div class="row">
+        <div class="row ftco-section bg-light ">
+
+            <div class="container">
+                <div class="row justify-content-center pb-4">
+                    <div class="col-md-12 heading-section text-center ftco-animate">
+                        <span class="subheading">Campuses</span>
+                        <h2 class="mb-4">Pick Your Campus</h2>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4 ftco-animate">
-                       <div class="project-wrap">
-                          <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
-                             <span class="price">Software</span>
-                         </a>
-                         <div class="text p-4">
-                             <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                             <p class="advisor">Advisor <span>Tony Garret</span></p>
-                             <ul class="d-flex justify-content-between">
-                                <li><span class="flaticon-shower"></span>2300</li>
-                                <li class="price">$199</li>
-                            </ul>
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <div class="project-wrap">
+                            <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
+                                <span class="price">Software</span>
+                            </a>
+                            <div class="text p-4">
+                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                <ul class="d-flex justify-content-between">
+                                    <li><span class="flaticon-shower"></span>2300</li>
+                                    <li class="price">$199</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 ftco-animate">
-                   <div class="project-wrap">
-                      <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
-                         <span class="price">Software</span>
-                     </a>
-                     <div class="text p-4">
-                         <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                         <p class="advisor">Advisor <span>Tony Garret</span></p>
-                         <ul class="d-flex justify-content-between">
-                            <li><span class="flaticon-shower"></span>2300</li>
-                            <li class="price">$199</li>
-                        </ul>
-                    </div>
-                </div>
-             </div>
-             <div class="col-md-4 ftco-animate">
-               <div class="project-wrap">
-                  <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
-                     <span class="price">Software</span>
-                 </a>
-                 <div class="text p-4">
-                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                     <p class="advisor">Advisor <span>Tony Garret</span></p>
-                     <ul class="d-flex justify-content-between">
-                        <li><span class="flaticon-shower"></span>2300</li>
-                        <li class="price">$199</li>
-                    </ul>
-                </div>
-             </div>
-             </div>
-             
-             <div class="col-md-4 ftco-animate">
-               <div class="project-wrap">
-                  <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
-                     <span class="price">Software</span>
-                 </a>
-                 <div class="text p-4">
-                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                     <p class="advisor">Advisor <span>Tony Garret</span></p>
-                     <ul class="d-flex justify-content-between">
-                        <li><span class="flaticon-shower"></span>2300</li>
-                        <li class="price">$199</li>
-                    </ul>
-                </div>
-             </div>
-             </div>
-             <div class="col-md-4 ftco-animate">
-               <div class="project-wrap">
-                  <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
-                     <span class="price">Software</span>
-                 </a>
-                 <div class="text p-4">
-                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                     <p class="advisor">Advisor <span>Tony Garret</span></p>
-                     <ul class="d-flex justify-content-between">
-                        <li><span class="flaticon-shower"></span>2300</li>
-                        <li class="price">$199</li>
-                    </ul>
-                </div>
-             </div>
-             </div>
-             <div class="col-md-4 ftco-animate">
-               <div class="project-wrap">
-                  <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
-                     <span class="price">Software</span>
-                 </a>
-                 <div class="text p-4">
-                     <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                     <p class="advisor">Advisor <span>Tony Garret</span></p>
-                     <ul class="d-flex justify-content-between">
-                        <li><span class="flaticon-shower"></span>2300</li>
-                        <li class="price">$199</li>
-                    </ul>
-                </div>
-             </div>
-             </div>
-             </div>
-             </div>
-           
-             
+            </div>
+
+
         </div>
     </div>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -903,22 +920,7 @@
                 logo.src = 'assets/amrita _logo.png';
             }
         });
-        // Initialize Lucide icons if needed
-        document.addEventListener('DOMContentLoaded', function () {
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            }
 
-            // Optional: Add click behavior if you want something to happen when clicking buttons
-            const popoverButtons = document.querySelectorAll('#customPopoverNav .blur-button');
-            popoverButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    // You can add custom click behavior here if needed
-                    // For example, show a modal with more details, etc.
-                    console.log("Button clicked:", this.textContent);
-                });
-            });
-        });
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('menu-toggle');
             const dropdown = document.querySelector('.dropdown-mobile');
