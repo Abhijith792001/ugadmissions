@@ -23,561 +23,680 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        .process-container {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .step:first-child::before {
+            left: 50%;
+            width: 50%;
+        }
+
+        .step:last-child::before {
+            width: 50%;
+        }
+
+        .step-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-icon {
+            background-color: #b1133b;
+            border-color: #b1133b;
+        }
+
+        .step.active .step-icon svg {
+            color: white;
+        }
+
+        .step-label {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .step-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #b1133b;
+        }
+
+        /* Responsive for tablets */
+        @media (max-width: 768px) {
+            .process-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 10px;
+            }
+
+            .step {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding-left: 10px;
+            }
+
+            .step::before {
+                content: none;
+                /* Hide horizontal line */
+            }
+
+            .step-icon {
+                width: 32px;
+                height: 32px;
+                margin: 0;
+                margin-right: 10px;
+            }
+
+            .step-label {
+                font-size: 14px;
+                text-align: left;
+            }
+        }
+
+        /* Responsive for mobile phones */
+        @media (max-width: 480px) {
+            .step-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .step-label {
+                font-size: 13px;
+            }
+        }
+
         .circle1 {
-    border-color: #a4123f;
-    background-color: #a4123f;
-    color: white;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.4s ease;
-}
-
-.dropdown-mobile {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition:
-        max-height 0.4s ease,
-        opacity 0.4s ease,
-        transform 0.4s ease,
-        padding 0.3s ease;
-    padding: 0 0;
-}
-
-/* Active state for smooth reveal */
-.dropdown-mobile.active {
-    max-height: 500px;
-    /* Enough to show all content */
-    opacity: 1;
-    transform: translateY(0);
-    padding: 10px 0;
-}
-
-
-/* Popover styles */
-.tab-popover {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    color: white;
-    z-index: 1000;
-    min-width: 250px;
-    max-width: 300px;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    top: -70px;
-    left: 0;
-}
-
-#customPopoverNav .nav-item {
-    position: relative;
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-#customPopoverNav .nav-item:hover .tab-popover {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Popover arrow */
-.tab-popover::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 20px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-}
-
-/* Adjust blur-button for new navigation */
-#customPopoverNav .blur-button {
-    position: relative;
-    padding: 4px 30px;
-    font-size: 18px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.384);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Media query for smaller screens */
-@media (max-width: 991px) {
-    #customPopoverNav {
-        display: none !important;
-    }
-    .main-ul{
-        display: none !important;
-    }
-}
-
-/* Adjust for screen sizes between 991px and 1040px */
-@media (min-width: 991px) and (max-width: 1040px) {
-    #customPopoverNav .nav-item {
-        margin-right: 5px;
-    }
-
-    #customPopoverNav .blur-button {
-        padding: 4px 15px;
-        font-size: 14px;
-    }
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-    color: #fff;
-    background-color: #a4123f;
-    border-color: #a4123f #a4123f #a4123f;
-}
-
-.blur-card {
-    background: rgba(27, 26, 26, 0.603);
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    color: white;
-}
-
-.hero-wrap .overlay {
-    background: none;
-}
-
-.btn {
-    border-radius: 8px !important;
-}
-
-button:focus {
-    outline: none !important;
-}
-
-.nav-tabs {
-    border: none !important;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.blur-button {
-    position: relative;
-    padding: 4px 30px;
-    font-size: 18px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.384);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.blur-button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 70%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.3) 50%,
-            rgba(255, 255, 255, 0) 100%);
-    transition: all 0.6s ease;
-}
-
-.blur-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-.blur-button:hover:before {
-    left: 100%;
-}
-
-.blur-button:active {
-    transform: translateY(0);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    background-color: #a4123f !important;
-    color: #ffffff !important;
-    border: none !important;
-    border-radius: 50px !important;
-}
-
-.nav-tabs .nav-link {
-    border-radius: 12px !important;
-    margin: 4px;
-}
-
-/* Hide tabs on screens smaller than laptop */
-@media (max-width: 991px) {
-    #customTab {
-        display: none !important;
-    }
-}
-
-/* Adjust tab sizes for screens between 991px and 1040px */
-@media (min-width: 991px) and (max-width: 1040px) {
-    #customTab .nav-item {
-        margin-right: 5px;
-    }
-
-    #customTab .blur-button {
-        padding: 4px 15px;
-        font-size: 14px;
-    }
-
-    #customTab {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-
-    #customTab .nav-item.mb-2 {
-        margin-bottom: 8px !important;
-    }
-}
-
-/* Improved responsive styles */
-/* Base Styles (Mobile First) */
-.large-only-margin {
-    margin-left: 10px !important;
-    margin-top: 30px !important;
-}
-
-.fact {
-    margin-left: 10px !important;
-}
-
-.custom-lg-width {
-    border-radius: 15px;
-    width: 100%;
-}
-
-.form-control {
-    border: 1px solid #9b9b9b !important;
-    border-radius: 8px !important;
-}
-
-/* UPDATED: Hero wrap styles with margin bottom to create distance to next section */
-.hero-wrap {
-    min-height: 85vh;
-    margin-bottom: 60px;
-    padding-bottom: 40px;
-}
-
-.ftco-section {
-    padding-top: 60px;
-}
-
-/* Extra Small Devices (up to 575px) */
-@media (max-width: 575px) {
-    .large-only-margin {
-        margin-left: 10px !important;
-        margin-top: 30px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 10px !important;
-    }
-
-    .hero-wrap {
-        min-height: 85vh;
-        margin-bottom: 40px;
-    }
-}
-
-/* Small Devices (576px to 767px) */
-@media (min-width: 576px) and (max-width: 767px) {
-    .large-only-margin {
-        margin-left: 15px !important;
-        margin-top: 40px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 15px !important;
-    }
-    
-    .hero-wrap {
-        min-height: 85vh;
-        margin-bottom: 50px;
-    }
-}
-
-/* Medium Devices (768px to 991px) - Tablets and small laptops */
-@media (min-width: 768px) and (max-width: 991px) {
-    .custom-lg-width {
-        width: 300px !important;
-    }
-
-    .large-only-margin {
-        margin-left: 25px !important;
-        margin-top: 60px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 60px !important;
-    }
-
-    .container-fluid {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .hero-wrap {
-        min-height: 80vh;
-        margin-bottom: 60px;
-    }
-}
-
-/* Large Devices (992px to 1199px) - Laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .custom-lg-width {
-        width: 340px !important;
-    }
-
-    .large-only-margin {
-        margin-left: 30px !important;
-        margin-top: 70px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 60px !important;
-    }
-
-    .container-fluid {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-
-    .hero-wrap {
-        min-height: 80vh;
-        margin-bottom: 70px;
-    }
-
-    #customTab {
-        display: flex !important;
-    }
-
-    .blur-button {
-        font-size: 16px;
-        padding: 4px 25px;
-    }
-}
-
-/* Extra Large Devices (1200px to 1399px) - Large laptops */
-@media (min-width: 1200px) and (max-width: 1399px) {
-    .custom-lg-width {
-        width: 360px !important;
-    }
-
-    .large-only-margin {
-        margin-left: 40px !important;
-        margin-top: 100px !important;
-        margin-right: 10px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 80px !important;
-    }
-
-    .container-fluid {
-        padding-left: 80px;
-        padding-right: 80px;
-    }
-    
-    .hero-wrap {
-        min-height: 85vh;
-        margin-bottom: 80px;
-    }
-
-    #customTab {
-        display: flex !important;
-    }
-}
-
-/* 2XL Screens (1400px and above) - Large displays */
-@media (min-width: 1400px) {
-    .custom-lg-width {
-        width: 387px !important;
-    }
-
-    .large-only-margin {
-        margin-left: 50px !important;
-        margin-top: 150px !important;
-        height: 600px !important;
-    }
-
-    .fact {
-        margin-left: 100px !important;
-    }
-
-    .container-fluid {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-    
-    .hero-wrap {
-        min-height: 90vh;
-        margin-bottom: 90px;
-    }
-
-    #customTab {
-        display: flex !important;
-    }
-}
-
-/* Right card positioning */
-.right-card {
-    margin-right: 10px !important;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .right-card {
-        margin-right: 20px !important;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-    .right-card {
-        margin-right: 30px !important;
-    }
-}
-
-@media (min-width: 1200px) and (max-width: 1399px) {
-    .right-card {
-        margin-right: 40px !important;
-    }
-}
-
-@media (min-width: 1400px) {
-    .right-card {
-        margin-right: 50px !important;
-    }
-}
-
-/* Additional laptop-specific styles */
-@media (min-width: 992px) and (max-width: 1399px) {
-    .hero-wrap {
-        display: flex;
-        align-items: center;
-        min-height: 85vh;
-    }
-
-    .row.content-row {
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .form-panel {
-        display: flex;
-        justify-content: flex-end;
-        height: 100%;
-    }
-}
-
-/* Mobile menu adjustments */
-@media (max-width: 768px) {
-    .head-mobile {
-        margin-left: 20px !important;
-    }
-}
-
-@media (max-width: 991px) {
-    .nav-show {
-        display: none !important;
-    }
-}
-
-/* Base Transitions */
-.img-log,
-.head-size {
-    transition: all 0.4s ease-in-out;
-}
-
-/* Optional: Smooth scaling effect for image */
-.img-log {
-    display: inline-block;
-    transform-origin: center;
-}
-
-/* Text style enhancements */
-.head-size {
-    font-weight: 500;
-    letter-spacing: 0.2px;
-    transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
-}
-
-/* Media Queries */
-@media screen and (min-width: 768px) {
-    .img-log {
-        width: 90px !important;
-    }
-
-    .head-size {
-        font-size: 15px !important;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .img-log {
-        width: 110px !important;
-        transform: scale(1.05);
-    }
-
-    .head-size {
-        font-size: 15px !important;
-        font-weight: 400;
-        letter-spacing: 0.4px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .img-log {
-        width: 140px !important;
-        transform: scale(1.08);
-    }
-
-    .head-size {
-        font-size: 19px !important;
-        font-weight: 500;
-        letter-spacing: 0.6px;
-    }
-}
+            border-color: #a4123f;
+            background-color: #a4123f;
+            color: white;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s ease;
+        }
+
+        .dropdown-mobile {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition:
+                max-height 0.4s ease,
+                opacity 0.4s ease,
+                transform 0.4s ease,
+                padding 0.3s ease;
+            padding: 0 0;
+        }
+
+        /* Active state for smooth reveal */
+        .dropdown-mobile.active {
+            max-height: 500px;
+            /* Enough to show all content */
+            opacity: 1;
+            transform: translateY(0);
+            padding: 10px 0;
+        }
+
+
+        /* Popover styles */
+        .tab-popover {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 1000;
+            min-width: 250px;
+            max-width: 300px;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            top: -70px;
+            left: 0;
+        }
+
+        #customPopoverNav .nav-item {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #customPopoverNav .nav-item:hover .tab-popover {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Popover arrow */
+        .tab-popover::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 20px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+        }
+
+        /* Adjust blur-button for new navigation */
+        #customPopoverNav .blur-button {
+            position: relative;
+            padding: 4px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.384);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 991px) {
+            #customPopoverNav {
+                display: none !important;
+            }
+
+            .main-ul {
+                display: none !important;
+            }
+        }
+
+        /* Adjust for screen sizes between 991px and 1040px */
+        @media (min-width: 991px) and (max-width: 1040px) {
+            #customPopoverNav .nav-item {
+                margin-right: 5px;
+            }
+
+            #customPopoverNav .blur-button {
+                padding: 4px 15px;
+                font-size: 14px;
+            }
+        }
+
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-item.show .nav-link {
+            color: #fff;
+            background-color: #a4123f;
+            border-color: #a4123f #a4123f #a4123f;
+        }
+
+        .blur-card {
+            background: rgba(27, 26, 26, 0.603);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .hero-wrap .overlay {
+            background: none;
+        }
+
+        .btn {
+            border-radius: 8px !important;
+        }
+
+        button:focus {
+            outline: none !important;
+        }
+
+        .nav-tabs {
+            border: none !important;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .blur-button {
+            position: relative;
+            padding: 4px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.384);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .blur-button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transition: all 0.6s ease;
+        }
+
+        .blur-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .blur-button:hover:before {
+            left: 100%;
+        }
+
+        .blur-button:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: #a4123f !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 50px !important;
+        }
+
+        .nav-tabs .nav-link {
+            border-radius: 12px !important;
+            margin: 4px;
+        }
+
+        /* Hide tabs on screens smaller than laptop */
+        @media (max-width: 991px) {
+            #customTab {
+                display: none !important;
+            }
+        }
+
+        /* Adjust tab sizes for screens between 991px and 1040px */
+        @media (min-width: 991px) and (max-width: 1040px) {
+            #customTab .nav-item {
+                margin-right: 5px;
+            }
+
+            #customTab .blur-button {
+                padding: 4px 15px;
+                font-size: 14px;
+            }
+
+            #customTab {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            #customTab .nav-item.mb-2 {
+                margin-bottom: 8px !important;
+            }
+        }
+
+        /* Improved responsive styles */
+        /* Base Styles (Mobile First) */
+        .large-only-margin {
+            margin-left: 10px !important;
+            margin-top: 30px !important;
+        }
+
+        .fact {
+            margin-left: 10px !important;
+        }
+
+        .custom-lg-width {
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .form-control {
+            border: 1px solid #9b9b9b !important;
+            border-radius: 8px !important;
+        }
+
+        /* UPDATED: Hero wrap styles with margin bottom to create distance to next section */
+        .hero-wrap {
+            min-height: 85vh;
+            /* margin-bottom: 60px; */
+            padding-bottom: 40px;
+        }
+
+        .ftco-section {
+            padding-top: 60px;
+        }
+
+        /* Extra Small Devices (up to 575px) */
+        @media (max-width: 575px) {
+            .large-only-margin {
+                margin-left: 10px !important;
+                margin-top: 30px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 10px !important;
+            }
+
+            .hero-wrap {
+                min-height: 85vh;
+                /* margin-bottom: 40px; */
+            }
+        }
+
+        /* Small Devices (576px to 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .large-only-margin {
+                margin-left: 15px !important;
+                margin-top: 40px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 15px !important;
+            }
+
+            .hero-wrap {
+                min-height: 85vh;
+                /* margin-bottom: 50px; */
+            }
+        }
+
+        /* Medium Devices (768px to 991px) - Tablets and small laptops */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .custom-lg-width {
+                width: 300px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 25px !important;
+                margin-top: 60px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 60px !important;
+            }
+
+            .container-fluid {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .hero-wrap {
+                min-height: 80vh;
+                /* margin-bottom: 60px; */
+            }
+        }
+
+        /* Large Devices (992px to 1199px) - Laptops */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .custom-lg-width {
+                width: 340px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 30px !important;
+                margin-top: 70px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 60px !important;
+            }
+
+            .container-fluid {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
+            .hero-wrap {
+                min-height: 80vh;
+                /* margin-bottom: 70px; */
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+
+            .blur-button {
+                font-size: 16px;
+                padding: 4px 25px;
+            }
+        }
+
+        /* Extra Large Devices (1200px to 1399px) - Large laptops */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .custom-lg-width {
+                width: 360px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 40px !important;
+                margin-top: 100px !important;
+                margin-right: 10px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 80px !important;
+            }
+
+            .container-fluid {
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+
+            .hero-wrap {
+                min-height: 85vh;
+                /* margin-bottom: 80px; */
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+        }
+
+        /* 2XL Screens (1400px and above) - Large displays */
+        @media (min-width: 1400px) {
+            .custom-lg-width {
+                width: 387px !important;
+            }
+
+            .large-only-margin {
+                margin-left: 50px !important;
+                margin-top: 150px !important;
+                height: 600px !important;
+            }
+
+            .fact {
+                margin-left: 100px !important;
+            }
+
+            .container-fluid {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            .hero-wrap {
+                min-height: 90vh;
+                /* margin-bottom: 90px; */
+            }
+
+            #customTab {
+                display: flex !important;
+            }
+        }
+
+        /* Right card positioning */
+        .right-card {
+            margin-right: 10px !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .right-card {
+                margin-right: 20px !important;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .right-card {
+                margin-right: 30px !important;
+            }
+        }
+
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .right-card {
+                margin-right: 40px !important;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .right-card {
+                margin-right: 50px !important;
+            }
+        }
+
+        /* Additional laptop-specific styles */
+        @media (min-width: 992px) and (max-width: 1399px) {
+            .hero-wrap {
+                display: flex;
+                align-items: center;
+                min-height: 85vh;
+            }
+
+            .row.content-row {
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .form-panel {
+                display: flex;
+                justify-content: flex-end;
+                height: 100%;
+            }
+        }
+
+        /* Mobile menu adjustments */
+        @media (max-width: 768px) {
+            .head-mobile {
+                margin-left: 20px !important;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .nav-show {
+                display: none !important;
+            }
+        }
+
+        /* Base Transitions */
+        .img-log,
+        .head-size {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Optional: Smooth scaling effect for image */
+        .img-log {
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        /* Text style enhancements */
+        .head-size {
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
+        }
+
+        /* Media Queries */
+        @media screen and (min-width: 768px) {
+            .img-log {
+                width: 90px !important;
+            }
+
+            .head-size {
+                font-size: 15px !important;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .img-log {
+                width: 110px !important;
+                transform: scale(1.05);
+            }
+
+            .head-size {
+                font-size: 15px !important;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+            }
+        }
+
+        @media screen and (min-width: 1280px) {
+            .img-log {
+                width: 140px !important;
+                transform: scale(1.08);
+            }
+
+            .head-size {
+                font-size: 19px !important;
+                font-weight: 500;
+                letter-spacing: 0.6px;
+            }
+        }
     </style>
 </head>
 
@@ -598,11 +717,11 @@ button:focus {
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="course.html" class="nav-link">Course</a></li>
-                    <li class="nav-item"><a href="instructor.html" class="nav-link">Instructor</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Course</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Hand Book</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -780,159 +899,222 @@ button:focus {
 
             </div>
 
+
+
         </div>
         <div class="row ftco-section bg-light ">
 
             <div class="container">
                 <div class="row justify-content-center pb-4">
                     <div class="col-md-12 heading-section text-center ftco-animate">
-                        <span class="subheading">Campuses</span>
-                        <h2 class="mb-4">Pick Your Campus</h2>
+
+                        <div class="process-container">
+                            <div class="step ">
+                                <div class="step-icon"><i data-lucide="mail"></i></div>
+                                <div class="step-label">Register</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon"><i data-lucide="info"></i></div>
+                                <div class="step-label">Personal Info</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon"><i data-lucide="file-text"></i></div>
+                                <div class="step-label">Application</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon"><i data-lucide="credit-card"></i></div>
+                                <div class="step-label">Payment</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon"><i data-lucide="book-open"></i></div>
+                                <div class="step-label">Academics</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon"><i data-lucide="upload"></i></div>
+                                <div class="step-label">Documents</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ftco-animate">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
-                                <span class="price">Software</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>2300</li>
-                                    <li class="price">$199</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="row justify-content-center pb-4">
+                    <div class="col-md-12 heading-section text-start ftco-animate">
+                        <h2 class="mb-4 text-center">Instructions</h2>
+                        <ul class="pl-3 text-dark">
+                            <li>
+                              This is the only portal to apply for any UG programmes (other than B.Tech) offered by Amrita Vishwa Vidyapeetham. / external portal to collect applications.
+                            </li>
+                            <li>
+                              We have no agents offering admissions for any programmes, at any campuses. University will not be responsible for any such acts if the candidates fall victim of such agents/third parties.
+                            </li>
+                            <li>
+                              Selection to B.Sc. Nursing, B.Sc. (Hons.) in Agriculture, B.Sc. Allied Health Sciences, and B.Pharm is based on the Amrita Entrance Examination – Life & Health Sciences.
+                            </li>
+                            <li>
+                              Selection to all the other programmes is based on the marks scored in the core subjects in +2 and an interview.
+                            </li>
+                            <li>
+                              Select the courses of your choice in the next screen and complete the payment.
+                            </li>
+                            <li>
+                              Updating the marks, documents etc. will be activated only on a later stage.
+                            </li>
+                          </ul>
+                          
                     </div>
                 </div>
             </div>
+            <div class="row ftco-section bg-light ">
+
+                <div class="container">
+                    <div class="row justify-content-center pb-4">
+                        <div class="col-md-12 heading-section text-center ftco-animate">
+                            <span class="subheading">Campuses</span>
+                            <h2 class="mb-4">Pick Your Campus</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-1.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-2.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-3.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-4.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-5.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
+                                    <span class="price">Software</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
+                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>2300</li>
+                                        <li class="price">$199</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
+            </div>
         </div>
-    </div>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script src="js/main.js"></script>
 
 
 
-    <!--Abhi Created-->
-    <script>
-        lucide.createIcons();
-        window.addEventListener('scroll', function () {
-            const heading = document.getElementById('navbar-heading');
-            const logo = document.querySelector('.img-log');
+        <!--Abhi Created-->
+        <script>
+            lucide.createIcons();
+            window.addEventListener('scroll', function () {
+                const heading = document.getElementById('navbar-heading');
+                const logo = document.querySelector('.img-log');
 
-            if (window.scrollY > 10) {
-                heading.style.color = 'black';
-                logo.src = 'assets/amrita _logo.svg';
-            } else {
-                heading.style.color = 'white';
-                logo.src = 'assets/amrita _logo.png';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('menu-toggle');
-            const dropdown = document.querySelector('.dropdown-mobile');
-
-            toggleBtn.addEventListener('click', () => {
-                dropdown.classList.toggle('active');
+                if (window.scrollY > 10) {
+                    heading.style.color = 'black';
+                    logo.src = 'assets/amrita _logo.svg';
+                } else {
+                    heading.style.color = 'white';
+                    logo.src = 'assets/amrita _logo.png';
+                }
             });
-        });
-    </script>
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const toggleBtn = document.getElementById('menu-toggle');
+                const dropdown = document.querySelector('.dropdown-mobile');
+
+                toggleBtn.addEventListener('click', () => {
+                    dropdown.classList.toggle('active');
+                });
+            });
+        </script>
 
 </body>
 
