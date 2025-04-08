@@ -307,6 +307,62 @@
             justify-content: flex-start;
         }
 
+        .collage-list-btn {
+            position: relative;
+            padding: 4px 30px;
+            font-size: 16px;
+            color: #a4123f;
+            background-color: #fff;
+            /* Bold primary color */
+            border: #a4123f;
+            border-radius: 30px;
+            /* More rounded corners for modern feel */
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+            text-transform: uppercase;
+            /* Adds a sleek, modern feel */
+            letter-spacing: 1px;
+            /* Slightly increase letter spacing */
+        }
+
+        .collage-list-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .collage-list-btn:hover {
+            transform: translateY(-4px);
+            /* Slightly more lift */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            background-color: #9F1F4F;
+            color: #fff;
+            /* Darker shade of primary color on hover */
+        }
+
+        .collage-list-btn:hover:before {
+            left: 100%;
+        }
+
+        .collage-list-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            background-color: #8E1A40;
+            /* Slightly darker color when clicked */
+        }
+
+
         .blur-button {
             position: relative;
             padding: 4px 30px;
@@ -982,7 +1038,7 @@
                     <div class="row justify-content-center pb-4">
                         <div class="col-md-12 heading-section text-center ftco-animate">
                             <span class="subheading">Campuses</span>
-                            <h2 class="mb-4">Pick Your Campus</h2>
+                            <h2 class="mb-4"> Campus</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -990,14 +1046,18 @@
                             <div class="project-wrap">
                                 <a href="#" class="img"
                                     style="background-image: url(https://applyug.amrita.edu/img/custom-img/amritapuri.png);">
-                                    <span class="price">Amritapuri</span>
+
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <h3><a href="#">Amritapuri</a></h3>
+                                    <p class="advisor">Amrita Vishwa Vidyapeetham
+                                        Amritapuri Campus
+                                        Amritapuri, Clappana P. O.
+                                        Kollam 690525
+                                        Kerala, India</span></p>
+
                                     <ul class="d-flex justify-content-between">
-                                        <li><span class="flaticon-shower"></span>2300</li>
-                                        <li class="price">$199</li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -1006,14 +1066,17 @@
                             <div class="project-wrap">
                                 <a href="#" class="img"
                                     style="background-image: url(https://applyug.amrita.edu/img/custom-img/ettimadai-3-470x285-1-xxt61xd1x80e7t0la5el8g.jpg);">
-                                    <span class="price">Coimbatore</span>
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Program offered by....  </a></h3>
-                                    
-                                      
+                                    <h3><a href="#">Coimbatore</a></h3>
+
+                                    <p class="advisor">Amrita Vishwa Vidyapeetham
+                                        Coimbatore Campus
+                                        Amritanagar
+                                        Coimbatore - 641 112
+                                        Tamilnadu, India</span></p>
                                     <ul class="d-flex justify-content-between">
-                                        <span class="badge badge-primar">Read more</span>
+
                                     </ul>
                                 </div>
                             </div>
@@ -1022,14 +1085,15 @@
                             <div class="project-wrap">
                                 <a href="#" class="img"
                                     style="background-image: url(https://applyug.amrita.edu/img/custom-img/amritahospital-fbd-scaled-1-ym75owt949rppk85sjs5xc.jpg);">
-                                    <span class="price">Faridabad</span>
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <h3><a href="#"> <span class="price">Faridabad</span>
+                                        </a></h3>
+                                    <p class="advisor">Amrita Hospital Mata Amritanandamayi Marg Sector 88,
+                                        Faridabad,
+                                        Haryana, 121002, India</span></p>
                                     <ul class="d-flex justify-content-between">
-                                        <li><span class="flaticon-shower"></span>2300</li>
-                                        <li class="price">$199</li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -1039,14 +1103,16 @@
                             <div class="project-wrap">
                                 <a href="#" class="img"
                                     style="background-image: url(https://applyug.amrita.edu/img/custom-img/kochi-campus-new-square-xkqj7olq8ye76vfqn51edc.jpg);">
-                                    <span class="price">Kochi</span>
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <h3><a href="#">Kochi</a></h3>
+                                    <p class="advisor">Amrita School of Medicine
+                                        Amrita Centre For Allied Health Sciences
+                                        AIMS, Ponnekkara .P.O.
+                                        Kochi - 682041
+                                        Kerala</span></p>
                                     <ul class="d-flex justify-content-between">
-                                        <li><span class="flaticon-shower"></span>2300</li>
-                                        <li class="price">$199</li>
+                                     
                                     </ul>
                                 </div>
                             </div>
@@ -1055,29 +1121,34 @@
                             <div class="project-wrap">
                                 <a href="#" class="img"
                                     style="background-image: url(https://applyug.amrita.edu/img/custom-img/Mysuru-ycfcq8kgqpnch5gtvak2kg.jpg);">
-                                    <span class="price">Mysuru</span>
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <h3><a href="#">Mysuru</a></h3>
+                                    <p class="advisor">Amrita Vishwa Vidyapeetham
+                                        Mysuru Campus
+                                        Mysuru – 570 026
+                                        #114, 7th Main Bogadi II Stage,
+                                        Karnataka, India</span></p>
                                     <ul class="d-flex justify-content-between">
-                                        <li><span class="flaticon-shower"></span>2300</li>
-                                        <li class="price">$199</li>
+                                       
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 ftco-animate">
                             <div class="project-wrap">
-                                <a href="#" class="img" style="background-image: url(images/work-6.jpg);">
-                                    <span class="price">Software</span>
+                                <a href="#" class="img" style="background-image: url(https://lh3.googleusercontent.com/gps-cs-s/AB5caB8SfXbThF1Y67BOnX0DM4e3ahFKgyYFFedg44FV5zhyom-zCraY1qzw9Qm7gEhW8gfuQTjMQbRJhF8n8i4B2TLe-a7G0C7DB_wWNjA7gE9g2NFsY5YHjeHKhlNCbQELGSDnroGtWw=s680-w680-h510);">
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">Design for the web with adobe photoshop</a></h3>
-                                    <p class="advisor">Advisor <span>Tony Garret</span></p>
+                                    <h3><a href="#">Kochi</a></h3>
+                                    <p class="advisor">Amrita Vishwa Vidyapeetham
+                                        Kochi Campus
+                                        Brahmasthanam,
+                                        Edappally North P.O.,
+                                        Kochi - 682024
+                                        Kerala, India</span></p>
                                     <ul class="d-flex justify-content-between">
-                                        <li><span class="flaticon-shower"></span>2300</li>
-                                        <li class="price">$199</li>
+                                     
                                     </ul>
                                 </div>
                             </div>
@@ -1085,8 +1156,608 @@
                     </div>
                 </div>
 
+                <!--Ne section-->
+                <div class="container">
+                    <div class="row justify-content-center pb-4">
+                        <div class="col-md-12 heading-section text-center ftco-animate">
+                            <!-- <span class="subheading">Campuses</span> -->
+                            <h2 class="mb-4">Programs offered by</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-12">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                aria-orientation="vertical">
+                                <button class="nav-link active collage-list-btn" id="v-pills-amritapuri-tab"
+                                    data-toggle="pill" data-target="#v-pills-amritapuri" type="button" role="tab"
+                                    aria-controls="v-pills-amritapuri" aria-selected="true">Amritapuri</button>
+                                <button class="nav-link collage-list-btn" id="v-pills-coimbatore-tab" data-toggle="pill"
+                                    data-target="#v-pills-coimbatore" type="button" role="tab"
+                                    aria-controls="v-pills-coimbatore" aria-selected="false">Coimbatore</button>
+                                <button class="nav-link collage-list-btn" id="v-pills-faridabad-tab" data-toggle="pill"
+                                    data-target="#v-pills-faridabad" type="button" role="tab"
+                                    aria-controls="v-pills-faridabad" aria-selected="false">Faridabad</button>
+                                <button class="nav-link collage-list-btn" id="v-pills-kochi-tab" data-toggle="pill"
+                                    data-target="#v-pills-kochi" type="button" role="tab" aria-controls="v-pills-kochi"
+                                    aria-selected="false">Kochi</button>
+                                <button class="nav-link collage-list-btn" id="v-pills-mysuru-tab" data-toggle="pill"
+                                    data-target="#v-pills-mysuru" type="button" role="tab"
+                                    aria-controls="v-pills-mysuru" aria-selected="false">Mysuru</button>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active " id="v-pills-amritapuri" role="tabpanel"
+                                    aria-labelledby="v-pills-amritapuri-tab">
 
+                                    <div class="row text-dark mt-3">
+                                        <div class="col-md-6">
+                                            <ul>
+
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5 Year Integrated M.Sc. Chemistry</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Com. (Honours/Honours with Research) in Taxation and
+                                                        Finance</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5-Year Integrated MSc / BSc (Hons) in Mathematics with a Minor
+                                                        in Data Science / Quantum Information Science</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5-Year Integrated MSc / 4-Year BSc (Hons) in Physics with a
+                                                        Minor in Scientific Computing / Data Science / Quantum
+                                                        Information Science</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <ul>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BSW Honours with Research</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. (Hons.) Biotechnology</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. (Hons.) Microbiology</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. (Hons.) Chemistry</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-coimbatore" role="tabpanel"
+                                    aria-labelledby="v-pills-coimbatore-tab">
+                                    <div class="row text-dark mt-3">
+                                        <div class="col-md-6 col-12">
+                                            <ul>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5 Year Integrated M.Sc. Chemistry</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5 Year Integrated M.Sc. Physics</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5-Year Integrated MSc Mathematics and Computing</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5 Year Integrated M.Sc. Data Science</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>Bachelors in Architecture (B Arch) - Coimbatore</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Des (Interior Design)</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <ul>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BSc (Hons) Food Science and Nutrition</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. (Hons) Agricultural Sciences</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BA (Hons) with Research in Mass Communication with Business
+                                                        Management and Media</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BA (Hons) with Research in Mass Communication with Digital
+                                                        Design and Animation</span>
+                                                </li>
+
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BSW Honours with Research</span>
+                                                </li>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-faridabad" role="tabpanel"
+                                    aria-labelledby="v-pills-faridabad-tab">
+                                    <div class="row mt-2 text-dark">
+                                        <div class="col-md-6 col-12">
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Nursing</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Medical Radiologic Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Cardiac Perfusion Technology (B.Sc. CPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Cardio Vascular Technology (B.Sc. CVT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Physician Assistant (B.Sc. PAT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Medical Laboratory Technology (B.Sc. MLT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Intensive Care Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Optometry (B.Sc. OPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Nutrition</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Neuro Electro Physiology (B.Sc. NEP)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Respiratory Therapy (B.Sc. RPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Emergency Medical Technology (B.Sc. EMT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Anaesthesia Technology (B.Sc. AT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Echocardiography Technology (ECT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Operation Theatre Technology (B.Sc. OTT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Radiotherapy Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Dialysis Therapy</span>
+                                                </li>
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Blood Bank Technology</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-kochi" role="tabpanel"
+                                    aria-labelledby="v-pills-kochi-tab">
+                                    <div class="row text-dark mt-2">
+                                        <div class="col-md-6 col-12">
+
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Nursing</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Medical Radiologic Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Cardiac Perfusion Technology (B.Sc. CPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Cardio Vascular Technology (B.Sc. CVT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Physician Assistant (B.Sc. PAT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Medical Laboratory Technology (B.Sc. MLT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Intensive Care Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Optometry (B.Sc. OPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Nutrition</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Neuro Electro Physiology (B.Sc. NEP)</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Respiratory Therapy (B.Sc. RPT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Emergency Medical Technology (B.Sc. EMT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Anaesthesia Technology (B.Sc. AT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Echocardiography Technology (ECT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Operation Theatre Technology (B.Sc. OTT)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Radiotherapy Technology</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Dialysis Therapy</span>
+                                                </li>
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. Blood Bank Technology</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-mysuru" role="tabpanel"
+                                    aria-labelledby="v-pills-mysuru-tab">
+                                    <div class="row  mt-2 text-dark">
+                                        <div class="col-md-6 col-12">
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. (Honours) Visual Communication with Minor in Artificial
+                                                        Intelligence</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>Integrated M.Sc. in Visual Communication</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B. Com. (Taxation and Finance)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Com. (Specialization in International Finance)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BBA (Specialization in Business Analytics)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BBA</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <ul style="padding-left: 0;">
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>BCA</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>5 Year Integrated M.C.A.</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. in Physics, Chemistry, Mathematics</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.C.A. (Specialization in Data Science)</span>
+                                                </li>
+                                                <li class="d-flex align-items-start" style="list-style: none;">
+                                                    <span
+                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
+                                                    </span>
+                                                    <span>B.Sc. in Physics, Mathematics, Computer Science</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
         <script src="js/jquery.min.js"></script>
