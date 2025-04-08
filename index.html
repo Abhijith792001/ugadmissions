@@ -838,11 +838,14 @@
                             <ul class="nav mt-5 flex-wrap d-none d-lg-block" id="customPopoverNav">
                                 <li class="nav-item mb-2">
                                     <button class="blur-button"
-                                        data-content="5 Year Integrated M.Sc. Chemistry">Physical Sciences</button>
+                                        data-content="5 Year Integrated M.Sc. Chemistry" id="v-pills-amritapuri-tab"
+                                        data-toggle="pill" data-target="#v-pills-amritapuri">Physical Sciences</button>
                                 </li>
                                 <li class="nav-item mb-2">
-                                    <button class="blur-button" data-content="Programs in Social Work">Social
+                                    <button class="blur-button" data-content="Programs in Social Work"   id="v-pills-coimbatore-tab" data-toggle="pill"
+                                    data-target="#v-pills-coimbatore" >Social
                                         Work</button>
+                                      
                                 </li>
                                 <li class="nav-item mb-2">
                                     <button class="blur-button" data-content="BCA, MCA, and other tech courses">Computer
@@ -1811,6 +1814,16 @@
                 dropdown.classList.toggle('active');
             });
         });
+   
+    $('#v-pills-amritapuri-tab').on('click', function () {
+        setTimeout(function () {
+            $('html, body').animate({
+                scrollTop: $('#v-pills-amritapuri').offset().top
+            }, 500); // 500ms scroll duration
+        }, 100);
+    });
+
+
     </script>
 
 </body>
