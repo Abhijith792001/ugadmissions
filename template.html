@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Placements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <style>
+    .placement-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      color: #333;
+      font-weight: 600;
+    }
+    
+    .placement-title:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #007bff;
+    }
+    
+    .logo-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      background-color: white;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+    
+    .logo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    .logo-card img {
+      max-height: 70px;
+      max-width: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-card:hover img {
+      transform: scale(1.1);
+    }
+    
+   
+    
+    .empty-placeholder {
+      height: 50px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    
+    @media (max-width: 576px) {
+      .logo-card {
+        height: 100px;
+        margin-bottom: 15px;
+      }
+      
+      .logo-card img {
+        max-height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-4">
+        <h2 class="placement-title">Our Corporate Placements</h2>
+        <p class="text-muted">Trusted by leading companies worldwide</p>
+      </div>
+
+      <!-- Amazon -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Amazon" class="img-fluid" id="amazon-logo">
+        </div>
+      </div>
+
+      <!-- Google -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Google" class="img-fluid" id="google-logo">
+        </div>
+      </div>
+
+      <!-- Arista Networks -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Arista Networks" class="img-fluid" id="arista-logo">
+        </div>
+      </div>
+
+      <!-- Atlassian -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Atlassian" class="img-fluid" id="atlassian-logo">
+        </div>
+      </div>
+
+      <!-- Bosch -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Bosch" class="img-fluid" id="bosch-logo">
+        </div>
+      </div>
+
+      <!-- Cisco -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Cisco" class="img-fluid" id="cisco-logo">
+        </div>
+      </div>
+
+      <!-- Ericsson -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Ericsson" class="img-fluid" id="ericsson-logo">
+        </div>
+      </div>
+
+      <!-- Zoho -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Zoho" class="img-fluid" id="zoho-logo">
+        </div>
+      </div>
+
+      <!-- IBM -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="IBM" class="img-fluid" id="ibm-logo">
+        </div>
+      </div>
+
+      <!-- Infosys -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Infosys" class="img-fluid" id="infosys-logo">
+        </div>
+      </div>
+
+      <!-- McKinsey & Company -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="McKinsey & Company" class="img-fluid" id="mckinsey-logo">
+        </div>
+      </div>
+
+      <!-- Mindtree -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Mindtree" class="img-fluid" id="mindtree-logo">
+        </div>
+      </div>
+
+      <!-- Microsoft -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Microsoft" class="img-fluid" id="microsoft-logo">
+        </div>
+      </div>
+
+      <!-- Nissan -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Nissan" class="img-fluid" id="nissan-logo">
+        </div>
+      </div>
+
+      <!-- TCS -->
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+        <div class="logo-card">
+          <img src="/api/placeholder/150/70" alt="Tata Consultancy Services" class="img-fluid" id="tcs-logo">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Updated logo URLs with the specified location
+    const logoUrls = {
+      'amazon-logo': 'https://spotlight.amrita.edu/btech/img/amazon.svg',
+      'google-logo': 'https://spotlight.amrita.edu/btech/img/google.svg',
+      'arista-logo': 'https://spotlight.amrita.edu/btech/img/arista-logo.svg',
+      'atlassian-logo': 'https://spotlight.amrita.edu/btech/img/atlassian.svg',
+      'bosch-logo': 'https://spotlight.amrita.edu/btech/img/bosch.svg',
+      'cisco-logo': 'https://spotlight.amrita.edu/btech/img/cisco.svg',
+      'ericsson-logo': 'https://spotlight.amrita.edu/btech/img/ericsson.svg',
+      'zoho-logo': 'https://spotlight.amrita.edu/btech/img/zoho.svg',
+      'ibm-logo': 'https://spotlight.amrita.edu/btech/img/ibm.svg',
+      'infosys-logo': 'https://spotlight.amrita.edu/btech/img/infosys.svg',
+      'mckinsey-logo': 'https://spotlight.amrita.edu/btech/img/mck.svg',
+      'mindtree-logo': 'https://spotlight.amrita.edu/btech/img/mf.svg',
+      'microsoft-logo': 'https://spotlight.amrita.edu/btech/img/microsoft.svg',
+      'nissan-logo': 'https://spotlight.amrita.edu/btech/img/nissan.svg',
+      'tcs-logo': 'https://spotlight.amrita.edu/btech/img/tcs.svg'
+    };
+
+    // Function to load images with fallback
+    function loadImageWithFallback(imgId, imgUrl) {
+      const img = document.getElementById(imgId);
+      if (!img) return;
+      
+      const tempImg = new Image();
+      tempImg.onload = function() {
+        img.src = imgUrl;
+      };
+      
+      tempImg.onerror = function() {
+        console.log('Failed to load image:', imgUrl);
+        // Keep the placeholder image
+      };
+      
+      tempImg.src = imgUrl;
+    }
+
+    // Load all images when document is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add fade-in animation to cards
+      const cards = document.querySelectorAll('.logo-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+
+      // Load images with fallback to placeholder
+      for (const [id, url] of Object.entries(logoUrls)) {
+        loadImageWithFallback(id, url);
+      }
+    });
+
+    // Add a simple filter functionality
+    window.filterLogos = function(searchTerm) {
+      const cards = document.querySelectorAll('.logo-card');
+      const term = searchTerm.toLowerCase();
+      
+      cards.forEach(card => {
+        const altText = card.querySelector('img').getAttribute('alt').toLowerCase();
+        const parent = card.closest('.col-lg-2');
+        
+        if (altText.includes(term) || term === '') {
+          parent.style.display = 'block';
+        } else {
+          parent.style.display = 'none';
+        }
+      });
+    };
+  </script>
+</body>
+</html>
