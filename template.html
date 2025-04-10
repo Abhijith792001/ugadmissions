@@ -3,271 +3,303 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Placements</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <title>University Rankings</title>
   <style>
-    .placement-title {
-      position: relative;
-      display: inline-block;
-      padding-bottom: 15px;
-      margin-bottom: 30px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    }
+
+    body {
+      background-color: #f9f7f8;
       color: #333;
-      font-weight: 600;
+      padding: 40px 20px;
     }
-    
-    .placement-title:after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background-color: #007bff;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    
-    .logo-card {
-      border-radius: 8px;
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #a4123F;
+      text-align: center;
+    }
+
+    .rankings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .ranking-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(164, 18, 63, 0.08);
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      background-color: white;
-      height: 140px;
+    }
+
+    /* Removed hover effect from cards */
+
+    .ranking-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #a4123F, #d43b68);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Removed hover effect for the top border */
+
+    /* UPDATED: Increased image container size */
+    .ranking-icon {
+      width: 120px;
+      height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px;
+      margin-bottom: 16px;
+      /* Added transition for hover effect on icon only */
+      transition: transform 0.3s ease;
     }
-    
-    .logo-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    
-    .logo-card img {
-      max-height: 70px;
-      max-width: 100%;
-      transition: all 0.3s ease;
-    }
-    
-    .logo-card:hover img {
+
+    /* Added hover effect for the icon only */
+    .ranking-icon:hover {
       transform: scale(1.1);
     }
-    
-   
-    
-    .empty-placeholder {
-      height: 50px;
-      background-color: #e9ecef;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      width: 100%;
+
+    .ranking-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
-    
-    @media (max-width: 576px) {
-      .logo-card {
-        height: 100px;
-        margin-bottom: 15px;
+
+    .ranking-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .ranking-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #a4123F;
+      margin-bottom: 4px;
+    }
+
+    .ranking-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid #e0e0e0;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #555;
+    }
+
+    .filter-btn:hover {
+      background: #fdf5f7;
+      border-color: #a4123F;
+      color: #a4123F;
+    }
+
+    .filter-btn.active {
+      background: #a4123F;
+      color: white;
+      border-color: #a4123F;
+    }
+
+    @media (max-width: 768px) {
+      .rankings-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       }
       
-      .logo-card img {
-        max-height: 50px;
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rankings-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-12 text-center mb-4">
-        <h2 class="placement-title">Our Corporate Placements</h2>
-        <p class="text-muted">Trusted by leading companies worldwide</p>
-      </div>
-
-      <!-- Amazon -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Amazon" class="img-fluid" id="amazon-logo">
+  <div class="container">
+    <h1 class="section-title">Excellence in Education</h1>
+    
+    <div class="filter-controls">
+      <button class="filter-btn active" data-filter="all">All Rankings</button>
+      <button class="filter-btn" data-filter="national">National</button>
+      <button class="filter-btn" data-filter="international">International</button>
+      <button class="filter-btn" data-filter="accreditation">Accreditations</button>
+    </div>
+    
+    <div class="rankings-grid">
+      <!-- Card 1: 7th Ranked University -->
+      <div class="ranking-card" data-category="national">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-2023.svg" alt="7th Ranked University">
         </div>
+        <div class="ranking-value">#7</div>
+        <div class="ranking-title">Top Ranked University</div>
+        <div class="ranking-subtitle">Ranked 7th among all universities in India</div>
       </div>
-
-      <!-- Google -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Google" class="img-fluid" id="google-logo">
+      
+      <!-- Card 2: A++ Grade -->
+      <div class="ranking-card" data-category="national">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-01-03.svg" alt="A++ Grade">
         </div>
+        <div class="ranking-value">A++</div>
+        <div class="ranking-title">NAAC Accreditation</div>
+        <div class="ranking-subtitle">Highest grade awarded for academic excellence</div>
       </div>
-
-      <!-- Arista Networks -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Arista Networks" class="img-fluid" id="arista-logo">
+      
+      <!-- Card 3: Impact Ranking -->
+      <div class="ranking-card" data-category="international">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/impact-ranking-2024.svg" alt="Impact Ranking">
         </div>
+        <div class="ranking-value">#1 in India</div>
+        <div class="ranking-title">Impact Rankings</div>
+        <div class="ranking-subtitle">Top 81 globally for sustainable development impact</div>
       </div>
-
-      <!-- Atlassian -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Atlassian" class="img-fluid" id="atlassian-logo">
+      
+      <!-- Card 4: International Outlook -->
+      <div class="ranking-card" data-category="international">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg" alt="International Outlook">
         </div>
+        <div class="ranking-value">#1 in India</div>
+        <div class="ranking-title">International Outlook</div>
+        <div class="ranking-subtitle">Leading global perspective in higher education</div>
       </div>
-
-      <!-- Bosch -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Bosch" class="img-fluid" id="bosch-logo">
+      
+      <!-- Card 5: International Faculty -->
+      <div class="ranking-card" data-category="international">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg" alt="International Faculty">
         </div>
+        <div class="ranking-value">#1 in India</div>
+        <div class="ranking-title">International Faculty</div>
+        <div class="ranking-subtitle">Highest ratio of international educators</div>
       </div>
-
-      <!-- Cisco -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Cisco" class="img-fluid" id="cisco-logo">
+      
+      <!-- Card 6: Institution of Eminence -->
+      <div class="ranking-card" data-category="national">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-03.svg" alt="Institution of Eminence">
         </div>
+        <div class="ranking-value">IoE</div>
+        <div class="ranking-title">Institution of Eminence</div>
+        <div class="ranking-subtitle">Recognized by Government of India for outstanding quality</div>
       </div>
-
-      <!-- Ericsson -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Ericsson" class="img-fluid" id="ericsson-logo">
+      
+      <!-- Card 7: NBA - Coimbatore Campus -->
+      <div class="ranking-card" data-category="accreditation">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/category-01.svg" alt="NBA Coimbatore">
         </div>
+        <div class="ranking-title">NBA Accredited</div>
+        <div class="ranking-subtitle">School of Engineering, Coimbatore Campus</div>
       </div>
-
-      <!-- Zoho -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Zoho" class="img-fluid" id="zoho-logo">
+      
+      <!-- Card 8: NBA - Amritapuri Campus -->
+      <div class="ranking-card" data-category="accreditation">
+        <div class="ranking-icon">
+          <img src="https://spotlight.amrita.edu/btech/img/nba.svg" alt="NBA Amritapuri">
         </div>
-      </div>
-
-      <!-- IBM -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="IBM" class="img-fluid" id="ibm-logo">
-        </div>
-      </div>
-
-      <!-- Infosys -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Infosys" class="img-fluid" id="infosys-logo">
-        </div>
-      </div>
-
-      <!-- McKinsey & Company -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="McKinsey & Company" class="img-fluid" id="mckinsey-logo">
-        </div>
-      </div>
-
-      <!-- Mindtree -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Mindtree" class="img-fluid" id="mindtree-logo">
-        </div>
-      </div>
-
-      <!-- Microsoft -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Microsoft" class="img-fluid" id="microsoft-logo">
-        </div>
-      </div>
-
-      <!-- Nissan -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Nissan" class="img-fluid" id="nissan-logo">
-        </div>
-      </div>
-
-      <!-- TCS -->
-      <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-        <div class="logo-card">
-          <img src="/api/placeholder/150/70" alt="Tata Consultancy Services" class="img-fluid" id="tcs-logo">
-        </div>
+        <div class="ranking-title">NBA Accredited</div>
+        <div class="ranking-subtitle">School of Engineering, Amritapuri Campus</div>
       </div>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Updated logo URLs with the specified location
-    const logoUrls = {
-      'amazon-logo': 'https://spotlight.amrita.edu/btech/img/amazon.svg',
-      'google-logo': 'https://spotlight.amrita.edu/btech/img/google.svg',
-      'arista-logo': 'https://spotlight.amrita.edu/btech/img/arista-logo.svg',
-      'atlassian-logo': 'https://spotlight.amrita.edu/btech/img/atlassian.svg',
-      'bosch-logo': 'https://spotlight.amrita.edu/btech/img/bosch.svg',
-      'cisco-logo': 'https://spotlight.amrita.edu/btech/img/cisco.svg',
-      'ericsson-logo': 'https://spotlight.amrita.edu/btech/img/ericsson.svg',
-      'zoho-logo': 'https://spotlight.amrita.edu/btech/img/zoho.svg',
-      'ibm-logo': 'https://spotlight.amrita.edu/btech/img/ibm.svg',
-      'infosys-logo': 'https://spotlight.amrita.edu/btech/img/infosys.svg',
-      'mckinsey-logo': 'https://spotlight.amrita.edu/btech/img/mck.svg',
-      'mindtree-logo': 'https://spotlight.amrita.edu/btech/img/mf.svg',
-      'microsoft-logo': 'https://spotlight.amrita.edu/btech/img/microsoft.svg',
-      'nissan-logo': 'https://spotlight.amrita.edu/btech/img/nissan.svg',
-      'tcs-logo': 'https://spotlight.amrita.edu/btech/img/tcs.svg'
-    };
-
-    // Function to load images with fallback
-    function loadImageWithFallback(imgId, imgUrl) {
-      const img = document.getElementById(imgId);
-      if (!img) return;
-      
-      const tempImg = new Image();
-      tempImg.onload = function() {
-        img.src = imgUrl;
-      };
-      
-      tempImg.onerror = function() {
-        console.log('Failed to load image:', imgUrl);
-        // Keep the placeholder image
-      };
-      
-      tempImg.src = imgUrl;
-    }
-
-    // Load all images when document is ready
     document.addEventListener('DOMContentLoaded', function() {
-      // Add fade-in animation to cards
-      const cards = document.querySelectorAll('.logo-card');
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-
-      // Load images with fallback to placeholder
-      for (const [id, url] of Object.entries(logoUrls)) {
-        loadImageWithFallback(id, url);
-      }
-    });
-
-    // Add a simple filter functionality
-    window.filterLogos = function(searchTerm) {
-      const cards = document.querySelectorAll('.logo-card');
-      const term = searchTerm.toLowerCase();
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const rankingCards = document.querySelectorAll('.ranking-card');
       
-      cards.forEach(card => {
-        const altText = card.querySelector('img').getAttribute('alt').toLowerCase();
-        const parent = card.closest('.col-lg-2');
-        
-        if (altText.includes(term) || term === '') {
-          parent.style.display = 'block';
-        } else {
-          parent.style.display = 'none';
-        }
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filterValue = this.getAttribute('data-filter');
+          
+          // Show/hide cards based on filter
+          rankingCards.forEach(card => {
+            if (filterValue === 'all') {
+              card.style.display = 'flex';
+              setTimeout(() => {
+                card.style.opacity = 1;
+                card.style.transform = 'translateY(0)';
+              }, 10);
+            } else {
+              if (card.getAttribute('data-category') === filterValue) {
+                card.style.display = 'flex';
+                setTimeout(() => {
+                  card.style.opacity = 1;
+                  card.style.transform = 'translateY(0)';
+                }, 10);
+              } else {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 300);
+              }
+            }
+          });
+        });
       });
-    };
+
+      // Removed card hover effects from JavaScript
+      // Only kept filtering functionality
+      
+      // Initialize with all cards visible
+      filterButtons[0].click();
+    });
   </script>
 </body>
 </html>
