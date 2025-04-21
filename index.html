@@ -22,949 +22,7 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-         .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: #a4123F;
-      text-align: center;
-    }
-
-    .rankings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .ranking-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(164, 18, 63, 0.08);
-      padding: 24px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Removed hover effect from cards */
-
-    .ranking-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #a4123F, #d43b68);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    /* Removed hover effect for the top border */
-
-    /* UPDATED: Increased image container size */
-    .ranking-icon {
-      width: 120px;
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      /* Added transition for hover effect on icon only */
-      transition: transform 0.3s ease;
-    }
-
-    /* Added hover effect for the icon only */
-    .ranking-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .ranking-icon img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .ranking-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: #444;
-    }
-
-    .ranking-value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #a4123F;
-      margin-bottom: 4px;
-    }
-
-    .ranking-subtitle {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.4;
-    }
-
-    .filter-controls {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 1px solid #e0e0e0;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      color: #555;
-    }
-
-    .filter-btn:hover {
-      background: #fdf5f7;
-      border-color: #a4123F;
-      color: #a4123F;
-    }
-
-    .filter-btn.active {
-      background: #a4123F;
-      color: white;
-      border-color: #a4123F;
-    }
-
-    @media (max-width: 768px) {
-      .rankings-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .rankings-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-        .placement-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .placement-title:after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: #A4123F;
-        }
-
-        .logo-card {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background-color: white;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
-
-        .logo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .logo-card img {
-            max-height: 70px;
-            max-width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .logo-card:hover img {
-            transform: scale(1.1);
-        }
-
-
-
-        .empty-placeholder {
-            height: 50px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-
-        @media (max-width: 576px) {
-            .logo-card {
-                height: 100px;
-                margin-bottom: 15px;
-            }
-
-            .logo-card img {
-                max-height: 50px;
-            }
-        }
-
-        .project-wrap .img {
-            border-radius: 15px;
-        }
-
-        .project-wrap {
-            border-radius: 18px !important;
-        }
-
-        .process-container {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            width: 100%;
-            max-width: 1100px;
-            position: relative;
-        }
-
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-
-        .step::before {
-            content: '';
-            position: absolute;
-            top: 32px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #e0e0e0;
-            z-index: 1;
-        }
-
-        .step:first-child::before {
-            left: 50%;
-            width: 50%;
-        }
-
-        .step:last-child::before {
-            width: 50%;
-        }
-
-        .step-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: white;
-            border: 2px solid #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            z-index: 2;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step.active .step-icon {
-            background-color: #b1133b;
-            border-color: #b1133b;
-        }
-
-        .step.active .step-icon svg {
-            color: white;
-        }
-
-        .step-label {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .step-icon svg {
-            width: 20px;
-            height: 20px;
-            color: #b1133b;
-        }
-
-        /* Responsive for tablets */
-        @media (max-width: 768px) {
-            .process-container {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px 10px;
-            }
-
-            .step {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                padding-left: 10px;
-            }
-
-            .step::before {
-                content: none;
-                /* Hide horizontal line */
-            }
-
-            .step-icon {
-                width: 32px;
-                height: 32px;
-                margin: 0;
-                margin-right: 10px;
-            }
-
-            .step-label {
-                font-size: 14px;
-                text-align: left;
-            }
-        }
-
-        /* Responsive for mobile phones */
-        @media (max-width: 480px) {
-            .step-icon {
-                width: 28px;
-                height: 28px;
-            }
-
-            .step-label {
-                font-size: 13px;
-            }
-        }
-
-        .circle1 {
-            border-color: #a4123f;
-            background-color: #a4123f;
-            color: white;
-            border-radius: 50%;
-            height: 40px;
-            width: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.4s ease;
-        }
-
-        .dropdown-mobile {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition:
-                max-height 0.4s ease,
-                opacity 0.4s ease,
-                transform 0.4s ease,
-                padding 0.3s ease;
-            padding: 0 0;
-        }
-
-        /* Active state for smooth reveal */
-        .dropdown-mobile.active {
-            max-height: 500px;
-            /* Enough to show all content */
-            opacity: 1;
-            transform: translateY(0);
-            padding: 10px 0;
-        }
-
-
-        /* Popover styles */
-        .tab-popover {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            color: white;
-            z-index: 1000;
-            min-width: 250px;
-            max-width: 300px;
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            top: -70px;
-            left: 0;
-        }
-
-        #customPopoverNav .nav-item {
-            position: relative;
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        #customPopoverNav .nav-item:hover .tab-popover {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Popover arrow */
-        .tab-popover::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 20px;
-            border-width: 8px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-        }
-
-        /* Adjust blur-button for new navigation */
-        #customPopoverNav .blur-button {
-            position: relative;
-            padding: 4px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.384);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Media query for smaller screens */
-        @media (max-width: 991px) {
-            #customPopoverNav {
-                display: none !important;
-            }
-
-            .main-ul {
-                display: none !important;
-            }
-        }
-
-        /* Adjust for screen sizes between 991px and 1040px */
-        @media (min-width: 991px) and (max-width: 1040px) {
-            #customPopoverNav .nav-item {
-                margin-right: 5px;
-            }
-
-            #customPopoverNav .blur-button {
-                padding: 4px 15px;
-                font-size: 14px;
-            }
-        }
-
-        .nav-tabs .nav-link.active,
-        .nav-tabs .nav-item.show .nav-link {
-            color: #fff;
-            background-color: #a4123f;
-            border-color: #a4123f #a4123f #a4123f;
-        }
-
-        .blur-card {
-            background: rgba(27, 26, 26, 0.603);
-            border-radius: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-
-        .hero-wrap .overlay {
-            background: none;
-        }
-
-        .btn {
-            border-radius: 8px !important;
-        }
-
-        button:focus {
-            outline: none !important;
-        }
-
-        .nav-tabs {
-            border: none !important;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        .collage-list-btn {
-            position: relative;
-            padding: 4px 30px;
-            font-size: 16px;
-            color: #a4123f;
-            background-color: #fff;
-            /* Bold primary color */
-            border: #a4123f;
-            border-radius: 30px;
-            /* More rounded corners for modern feel */
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            margin: 5px;
-            text-transform: uppercase;
-            /* Adds a sleek, modern feel */
-            letter-spacing: 1px;
-            /* Slightly increase letter spacing */
-        }
-
-        .collage-list-btn:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 70%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            transition: all 0.5s ease;
-        }
-
-        .collage-list-btn:hover {
-            transform: translateY(-4px);
-            /* Slightly more lift */
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            background-color: #9F1F4F;
-            color: #fff;
-            /* Darker shade of primary color on hover */
-        }
-
-        .collage-list-btn:hover:before {
-            left: 100%;
-        }
-
-        .collage-list-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-            background-color: #8E1A40;
-            /* Slightly darker color when clicked */
-        }
-
-
-        .blur-button {
-            position: relative;
-            padding: 4px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.384);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .blur-button:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 70%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            transition: all 0.6s ease;
-        }
-
-        .blur-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .blur-button:hover:before {
-            left: 100%;
-        }
-
-        .blur-button:active {
-            transform: translateY(0);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
-            background-color: #a4123f !important;
-            color: #ffffff !important;
-            border: none !important;
-            border-radius: 50px !important;
-        }
-
-        .nav-tabs .nav-link {
-            border-radius: 12px !important;
-            margin: 4px;
-        }
-
-        /* Hide tabs on screens smaller than laptop */
-        @media (max-width: 991px) {
-            #customTab {
-                display: none !important;
-            }
-        }
-
-        /* Adjust tab sizes for screens between 991px and 1040px */
-        @media (min-width: 991px) and (max-width: 1040px) {
-            #customTab .nav-item {
-                margin-right: 5px;
-            }
-
-            #customTab .blur-button {
-                padding: 4px 15px;
-                font-size: 14px;
-            }
-
-            #customTab {
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-
-            #customTab .nav-item.mb-2 {
-                margin-bottom: 8px !important;
-            }
-        }
-
-        /* Improved responsive styles */
-        /* Base Styles (Mobile First) */
-        .large-only-margin {
-            margin-left: 10px !important;
-            margin-top: 30px !important;
-        }
-
-        .fact {
-            margin-left: 10px !important;
-        }
-
-        .custom-lg-width {
-            border-radius: 15px;
-            width: 100%;
-        }
-
-        .form-control {
-            border: 1px solid #9b9b9b !important;
-            border-radius: 8px !important;
-        }
-
-        /* UPDATED: Hero wrap styles with margin bottom to create distance to next section */
-        .hero-wrap {
-            min-height: 85vh;
-            /* margin-bottom: 60px; */
-            padding-bottom: 40px;
-        }
-
-        .ftco-section {
-            padding-top: 60px;
-        }
-
-        /* Extra Small Devices (up to 575px) */
-        @media (max-width: 575px) {
-            .large-only-margin {
-                margin-left: 10px !important;
-                margin-top: 30px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 10px !important;
-            }
-
-            .hero-wrap {
-                min-height: 85vh;
-                /* margin-bottom: 40px; */
-            }
-        }
-
-        /* Small Devices (576px to 767px) */
-        @media (min-width: 576px) and (max-width: 767px) {
-            .large-only-margin {
-                margin-left: 15px !important;
-                margin-top: 40px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 15px !important;
-            }
-
-            .hero-wrap {
-                min-height: 85vh;
-                /* margin-bottom: 50px; */
-            }
-        }
-
-        /* Medium Devices (768px to 991px) - Tablets and small laptops */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .custom-lg-width {
-                width: 300px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 25px !important;
-                margin-top: 60px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 60px !important;
-            }
-
-            .container-fluid {
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-
-            .hero-wrap {
-                min-height: 80vh;
-                /* margin-bottom: 60px; */
-            }
-        }
-
-        /* Large Devices (992px to 1199px) - Laptops */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .custom-lg-width {
-                width: 340px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 30px !important;
-                margin-top: 70px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 60px !important;
-            }
-
-            .container-fluid {
-                padding-left: 50px;
-                padding-right: 50px;
-            }
-
-            .hero-wrap {
-                min-height: 80vh;
-                /* margin-bottom: 70px; */
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-
-            .blur-button {
-                font-size: 16px;
-                padding: 4px 25px;
-            }
-        }
-
-        /* Extra Large Devices (1200px to 1399px) - Large laptops */
-        @media (min-width: 1200px) and (max-width: 1399px) {
-            .custom-lg-width {
-                width: 360px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 40px !important;
-                margin-top: 100px !important;
-                margin-right: 10px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 80px !important;
-            }
-
-            .container-fluid {
-                padding-left: 80px;
-                padding-right: 80px;
-            }
-
-            .hero-wrap {
-                min-height: 85vh;
-                /* margin-bottom: 80px; */
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-        }
-
-        /* 2XL Screens (1400px and above) - Large displays */
-        @media (min-width: 1400px) {
-            .custom-lg-width {
-                width: 387px !important;
-            }
-
-            .large-only-margin {
-                margin-left: 50px !important;
-                margin-top: 150px !important;
-                height: 600px !important;
-            }
-
-            .fact {
-                margin-left: 100px !important;
-            }
-
-            .container-fluid {
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-
-            .hero-wrap {
-                min-height: 90vh;
-                /* margin-bottom: 90px; */
-            }
-
-            #customTab {
-                display: flex !important;
-            }
-        }
-
-        /* Right card positioning */
-        .right-card {
-            margin-right: 10px !important;
-        }
-
-        @media (min-width: 768px) and (max-width: 991px) {
-            .right-card {
-                margin-right: 20px !important;
-            }
-        }
-
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .right-card {
-                margin-right: 30px !important;
-            }
-        }
-
-        @media (min-width: 1200px) and (max-width: 1399px) {
-            .right-card {
-                margin-right: 40px !important;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .right-card {
-                margin-right: 50px !important;
-            }
-        }
-
-        /* Additional laptop-specific styles */
-        @media (min-width: 992px) and (max-width: 1399px) {
-            .hero-wrap {
-                display: flex;
-                align-items: center;
-                min-height: 85vh;
-            }
-
-            .row.content-row {
-                width: 100%;
-                display: flex;
-                align-items: center;
-            }
-
-            .form-panel {
-                display: flex;
-                justify-content: flex-end;
-                height: 100%;
-            }
-        }
-
-        /* Mobile menu adjustments */
-        @media (max-width: 768px) {
-            .head-mobile {
-                margin-left: 20px !important;
-            }
-        }
-
-        @media (max-width: 991px) {
-            .nav-show {
-                display: none !important;
-            }
-        }
-
-        /* Base Transitions */
-        .img-log,
-        .head-size {
-            transition: all 0.4s ease-in-out;
-        }
-
-        /* Optional: Smooth scaling effect for image */
-        .img-log {
-            display: inline-block;
-            transform-origin: center;
-        }
-
-        /* Text style enhancements */
-        .head-size {
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            transition: all 0.4s ease-in-out, letter-spacing 0.3s ease;
-        }
-
-        /* Media Queries */
-        @media screen and (min-width: 768px) {
-            .img-log {
-                width: 90px !important;
-            }
-
-            .head-size {
-                font-size: 15px !important;
-            }
-        }
-
-        @media screen and (min-width: 1024px) {
-            .img-log {
-                width: 110px !important;
-                transform: scale(1.05);
-            }
-
-            .head-size {
-                font-size: 15px !important;
-                font-weight: 400;
-                letter-spacing: 0.4px;
-            }
-        }
-
-        @media screen and (min-width: 1280px) {
-            .img-log {
-                width: 140px !important;
-                transform: scale(1.08);
-            }
-
-            .head-size {
-                font-size: 19px !important;
-                font-weight: 500;
-                letter-spacing: 0.6px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/abhi.css">
 </head>
 
 <body>
@@ -988,7 +46,7 @@
                     <li class="nav-item"><a href="#" class="nav-link">Course</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Hand Book</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="#contact"  class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -1034,9 +92,11 @@
 
 
                             <span class=" main-ul">
-                                <p class="mb-0"><a href="#" class="btn btn-primary d-none d-md-block ">3/4 year UG / Integrated Programmes
+                                <p class="mb-0"><a href="#" class="btn btn-primary d-none d-md-block ">3/4 year UG /
+                                        Integrated Programmes
                                         offered in</a></p>
-                                <p class="mb-0"><a href="#" class="btn btn-primary d-md-none d-block">3/4 year UG / Integrated Programmes
+                                <p class="mb-0"><a href="#" class="btn btn-primary d-md-none d-block">3/4 year UG /
+                                        Integrated Programmes
                                         offered in</a></p>
                             </span>
 
@@ -1307,7 +367,9 @@
                                         </a></h3>
                                     <p class="advisor">Amrita Hospital Mata Amritanandamayi Marg Sector 88,
                                         Faridabad,
-                                        Haryana, 121002,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; India</span></p>
+                                        Haryana,
+                                        121002,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        India</span></p>
                                     <ul class="d-flex justify-content-between">
 
                                     </ul>
@@ -1380,920 +442,568 @@
                             <!-- <span class="subheading">Campuses</span> -->
                             <h2 class=" d-md-none d-block mb-4  text-center">Programs offered by</h2>
                             <h2 class="d-none d-sm-block ml-4 mb-4 text-center ">Programs offered by</h2>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center" style="margin-left: 20px !important;">
-                        <div class="col-md-3 col-12">
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                aria-orientation="vertical">
-                                <button class="nav-link active collage-list-btn" id="v-pills-amritapuri-tab"
-                                    data-toggle="pill" data-target="#v-pills-amritapuri" type="button" role="tab"
-                                    aria-controls="v-pills-amritapuri" aria-selected="true">Amritapuri</button>
-                                <button class="nav-link collage-list-btn" id="v-pills-coimbatore-tab" data-toggle="pill"
-                                    data-target="#v-pills-coimbatore" type="button" role="tab"
-                                    aria-controls="v-pills-coimbatore" aria-selected="false">Coimbatore</button>
-                                <button class="nav-link collage-list-btn" id="v-pills-faridabad-tab" data-toggle="pill"
-                                    data-target="#v-pills-faridabad" type="button" role="tab"
-                                    aria-controls="v-pills-faridabad" aria-selected="false">Faridabad</button>
-                                <button class="nav-link collage-list-btn" id="v-pills-kochi-tab" data-toggle="pill"
-                                    data-target="#v-pills-kochi" type="button" role="tab" aria-controls="v-pills-kochi"
-                                    aria-selected="false">Kochi</button>
-                                <button class="nav-link collage-list-btn" id="v-pills-mysuru-tab" data-toggle="pill"
-                                    data-target="#v-pills-mysuru" type="button" role="tab"
-                                    aria-controls="v-pills-mysuru" aria-selected="false">Mysuru</button>
-                            </div>
-                        </div>
-                        <div class="col-md-9 col-12">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active " id="v-pills-amritapuri" role="tabpanel"
-                                    aria-labelledby="v-pills-amritapuri-tab">
-
-                                    <div class="row text-dark mt-3">
-                                        <div class="col-md-6">
-                                            <ul>
+                            <div class="row justify-content-center" style="margin-left: 20px !important;">
 
 
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5 Year Integrated M.Sc. Chemistry</span>
-                                                </li>
+                                <!-- Program offered start -->
 
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Com. (Honours/Honours with Research) in Taxation and
-                                                        Finance</span>
-                                                </li>
+                                <ul class="nav nav-pills program-card flex-wrap">
+                                    <li class="nav-item"><a class="nav-link" href="#">Interdisciplinary Studies</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Medicine</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Physical Sciences</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Business / Management</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Allied Health Sciences</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Health Sciences</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Computing</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Arts, Humanities & Commerce</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Commerce</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Nanoscience</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Dentistry</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Nursing</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Mass Communication</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Pharmacy</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Sciences</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Computer Applications</a></li>
+                                </ul>
 
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5-Year Integrated MSc / BSc (Hons) in Mathematics with a Minor
-                                                        in Data Science / Quantum Information Science</span>
-                                                </li>
+                                <style>
 
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5-Year Integrated MSc / 4-Year BSc (Hons) in Physics with a
-                                                        Minor in Scientific Computing / Data Science / Quantum
-                                                        Information Science</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6">
+                                </style>
+                                <!-- Program offered end -->
 
-                                            <ul>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BSW Honours with Research</span>
-                                                </li>
+                                <!-- Search Bar -->
 
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. (Hons.) Biotechnology</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. (Hons.) Microbiology</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. (Hons.) Chemistry</span>
-                                                </li>
-                                            </ul>
-
-                                        </div>
+                                <div class="w-100 mt-3">
+                                    <div class="custom-search  ">
+                                        <input type="text" placeholder="Search Program" class="search-input" />
+                                        <i data-lucide="search" class="search-icon"></i>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-coimbatore" role="tabpanel"
-                                    aria-labelledby="v-pills-coimbatore-tab">
-                                    <div class="row text-dark mt-3">
-                                        <div class="col-md-6 col-12">
-                                            <ul>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5 Year Integrated M.Sc. Chemistry</span>
-                                                </li>
 
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5 Year Integrated M.Sc. Physics</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5-Year Integrated MSc Mathematics and Computing</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5 Year Integrated M.Sc. Data Science</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>Bachelors in Architecture (B Arch) - Coimbatore</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Des (Interior Design)</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <ul>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BSc (Hons) Food Science and Nutrition</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. (Hons) Agricultural Sciences</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BA (Hons) with Research in Mass Communication with Business
-                                                        Management and Media</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BA (Hons) with Research in Mass Communication with Digital
-                                                        Design and Animation</span>
-                                                </li>
-
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BSW Honours with Research</span>
-                                                </li>
+                                <div class="row w-100 mt-5 ">
+                                    <!-- Horizontal line -->
+                                    <div class="hr w-100 mb-3 mt-3"></div>
+                                
+                                    <div class="col-md-6 col-12">
+                                        <div class="d-flex mt-3">
+                                            <!-- Yellow vertical line -->
+                                            <div class="yellow-line me-3"></div>
+                                
+                                            <div class=" ml-3">
+                                                <!-- Heading for desktop -->
+                                                <p class="h5 d-none d-md-block" style="color: #A4123F;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Heading for small devices -->
+                                                <p class="h5 d-md-none d-sm-block" style="color: #A4123F; font-size: 15px;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Course locations -->
+                                                <div class="d-flex" style="gap: 3px;">
+                                                    <small>Course Offered In</small>
+                                                    <small class="mx-2 amrita">Kochi</small>
+                                                    <small class="mx-2 amrita">Faridabad</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-faridabad" role="tabpanel"
-                                    aria-labelledby="v-pills-faridabad-tab">
-                                    <div class="row mt-2 text-dark">
-                                        <div class="col-md-6 col-12">
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Nursing</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Medical Radiologic Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Cardiac Perfusion Technology (B.Sc. CPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Cardio Vascular Technology (B.Sc. CVT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Physician Assistant (B.Sc. PAT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Medical Laboratory Technology (B.Sc. MLT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Intensive Care Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Optometry (B.Sc. OPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Nutrition</span>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Neuro Electro Physiology (B.Sc. NEP)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Respiratory Therapy (B.Sc. RPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Emergency Medical Technology (B.Sc. EMT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Anaesthesia Technology (B.Sc. AT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Echocardiography Technology (ECT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Operation Theatre Technology (B.Sc. OTT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Radiotherapy Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Dialysis Therapy</span>
-                                                </li>
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Blood Bank Technology</span>
-                                                </li>
-                                            </ul>
-
+                                
+                                    <div class="col-md-6 col-12 d-flex justify-content-md-end align-items-center " style="gap: 2px;">
+                                        <button class="btn  program-btn d-flex justify-content-center align-items-center" 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">View Details</button>
+                                
+                                <button class="btn d-flex program-btn justify-content-center align-items-center " 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">Apply Now</button>
+                                    </div>
+                                    <div class="hr w-100 mb-3 mt-3"></div>
+                                
+                                    <div class="col-md-6 col-12">
+                                        <div class="d-flex mt-3">
+                                            <!-- Yellow vertical line -->
+                                            <div class="yellow-line me-3"></div>
+                                
+                                            <div class=" ml-3">
+                                                <!-- Heading for desktop -->
+                                                <p class="h5 d-none d-md-block" style="color: #A4123F;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Heading for small devices -->
+                                                <p class="h5 d-md-none d-sm-block" style="color: #A4123F; font-size: 15px;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Course locations -->
+                                                <div class="d-flex" style="gap: 3px;">
+                                                    <small>Course Offered In</small>
+                                                    <small class="mx-2 amrita">Kochi</small>
+                                                    <small class="mx-2 amrita">Faridabad</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-kochi" role="tabpanel"
-                                    aria-labelledby="v-pills-kochi-tab">
-                                    <div class="row text-dark mt-2">
-                                        <div class="col-md-6 col-12">
-
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Nursing</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Medical Radiologic Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Cardiac Perfusion Technology (B.Sc. CPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Cardio Vascular Technology (B.Sc. CVT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Physician Assistant (B.Sc. PAT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Medical Laboratory Technology (B.Sc. MLT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Intensive Care Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Optometry (B.Sc. OPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Nutrition</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Neuro Electro Physiology (B.Sc. NEP)</span>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="col-md-6 col-12">
-
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Respiratory Therapy (B.Sc. RPT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Emergency Medical Technology (B.Sc. EMT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Anaesthesia Technology (B.Sc. AT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Echocardiography Technology (ECT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Operation Theatre Technology (B.Sc. OTT)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Radiotherapy Technology</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Dialysis Therapy</span>
-                                                </li>
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. Blood Bank Technology</span>
-                                                </li>
-                                            </ul>
-
+                                
+                                    <div class="col-md-6 col-12 d-flex justify-content-md-end align-items-center " style="gap: 2px;">
+                                        <button class="btn  program-btn d-flex justify-content-center align-items-center" 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">View Details</button>
+                                
+                                <button class="btn d-flex program-btn justify-content-center align-items-center " 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">Apply Now</button>
+                                    </div>
+                                    <div class="hr w-100 mb-3 mt-3"></div>
+                                
+                                    <div class="col-md-6 col-12">
+                                        <div class="d-flex mt-3">
+                                            <!-- Yellow vertical line -->
+                                            <div class="yellow-line me-3"></div>
+                                
+                                            <div class=" ml-3">
+                                                <!-- Heading for desktop -->
+                                                <p class="h5 d-none d-md-block" style="color: #A4123F;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Heading for small devices -->
+                                                <p class="h5 d-md-none d-sm-block" style="color: #A4123F; font-size: 15px;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Course locations -->
+                                                <div class="d-flex" style="gap: 3px;">
+                                                    <small>Course Offered In</small>
+                                                    <small class="mx-2 amrita">Kochi</small>
+                                                    <small class="mx-2 amrita">Faridabad</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-mysuru" role="tabpanel"
-                                    aria-labelledby="v-pills-mysuru-tab">
-                                    <div class="row  mt-2 text-dark">
-                                        <div class="col-md-6 col-12">
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. (Honours) Visual Communication with Minor in Artificial
-                                                        Intelligence</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>Integrated M.Sc. in Visual Communication</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B. Com. (Taxation and Finance)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Com. (Specialization in International Finance)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BBA (Specialization in Business Analytics)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BBA</span>
-                                                </li>
-                                            </ul>
-
+                                
+                                    <div class="col-md-6 col-12 d-flex justify-content-md-end align-items-center " style="gap: 2px;">
+                                        <button class="btn  program-btn d-flex justify-content-center align-items-center" 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">View Details</button>
+                                
+                                <button class="btn d-flex program-btn justify-content-center align-items-center " 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">Apply Now</button>
+                                    </div>
+                                    <div class="hr w-100 mb-3 mt-3"></div>
+                                
+                                    <div class="col-md-6 col-12">
+                                        <div class="d-flex mt-3">
+                                            <!-- Yellow vertical line -->
+                                            <div class="yellow-line me-3"></div>
+                                
+                                            <div class=" ml-3">
+                                                <!-- Heading for desktop -->
+                                                <p class="h5 d-none d-md-block" style="color: #A4123F;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Heading for small devices -->
+                                                <p class="h5 d-md-none d-sm-block" style="color: #A4123F; font-size: 15px;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Course locations -->
+                                                <div class="d-flex" style="gap: 3px;">
+                                                    <small>Course Offered In</small>
+                                                    <small class="mx-2 amrita">Kochi</small>
+                                                    <small class="mx-2 amrita">Faridabad</small>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <ul style="padding-left: 0;">
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>BCA</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>5 Year Integrated M.C.A.</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. in Physics, Chemistry, Mathematics</span>
-                                                </li>
-                                                <li class="d-flex align-items-start mb-2" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.C.A. (Specialization in Data Science)</span>
-                                                </li>
-                                                <li class="d-flex align-items-start" style="list-style: none;">
-                                                    <span
-                                                        style="background-color: #f5ceda; padding: 6px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
-                                                        <i data-lucide="graduation-cap" style="color: #a4123f;"></i>
-                                                    </span>
-                                                    <span>B.Sc. in Physics, Mathematics, Computer Science</span>
-                                                </li>
-                                            </ul>
-
+                                    </div>
+                                
+                                    <div class="col-md-6 col-12 d-flex justify-content-md-end align-items-center " style="gap: 2px;">
+                                        <button class="btn  program-btn d-flex justify-content-center align-items-center" 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">View Details</button>
+                                
+                                <button class="btn d-flex program-btn justify-content-center align-items-center " 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">Apply Now</button>
+                                    </div>
+                                    <div class="hr w-100 mb-3 mt-3"></div>
+                                
+                                    <div class="col-md-6 col-12">
+                                        <div class="d-flex mt-3">
+                                            <!-- Yellow vertical line -->
+                                            <div class="yellow-line me-3"></div>
+                                
+                                            <div class=" ml-3">
+                                                <!-- Heading for desktop -->
+                                                <p class="h5 d-none d-md-block" style="color: #A4123F;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Heading for small devices -->
+                                                <p class="h5 d-md-none d-sm-block" style="color: #A4123F; font-size: 15px;">B.Sc. Respiratory Therapy (B. Sc. RPT)</p>
+                                
+                                                <!-- Course locations -->
+                                                <div class="d-flex" style="gap: 3px;">
+                                                    <small>Course Offered In</small>
+                                                    <small class="mx-2 amrita">Kochi</small>
+                                                    <small class="mx-2 amrita">Faridabad</small>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+                                
+                                    <div class="col-md-6 col-12 d-flex justify-content-md-end align-items-center " style="gap: 2px;">
+                                        <button class="btn  program-btn d-flex justify-content-center align-items-center" 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">View Details</button>
+                                
+                                <button class="btn d-flex program-btn justify-content-center align-items-center " 
+                                        style="height: 30px; width: 150px; border-radius: 50px !important; 
+                                        background-color: #fff; color: #A4123F; border: 1px #A4123F solid;">Apply Now</button>
                                     </div>
                                 </div>
                                 
+
+
+
+                                <div class="container my-5">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 text-center mb-4">
+                                            <h2 class="placement-title">Our Corporate Placements</h2>
+                                            <p class="text-muted">Trusted by leading companies worldwide</p>
+                                        </div>
+
+                                        <!-- Amazon -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Amazon" class="img-fluid"
+                                                    id="amazon-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Google -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Google" class="img-fluid"
+                                                    id="google-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Arista Networks -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Arista Networks"
+                                                    class="img-fluid" id="arista-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Atlassian -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Atlassian" class="img-fluid"
+                                                    id="atlassian-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Bosch -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Bosch" class="img-fluid"
+                                                    id="bosch-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Cisco -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Cisco" class="img-fluid"
+                                                    id="cisco-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Ericsson -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Ericsson" class="img-fluid"
+                                                    id="ericsson-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Zoho -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Zoho" class="img-fluid"
+                                                    id="zoho-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- IBM -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="IBM" class="img-fluid"
+                                                    id="ibm-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Infosys -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Infosys" class="img-fluid"
+                                                    id="infosys-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- McKinsey & Company -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="McKinsey & Company"
+                                                    class="img-fluid" id="mckinsey-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Mindtree -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Mindtree" class="img-fluid"
+                                                    id="mindtree-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Microsoft -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Microsoft" class="img-fluid"
+                                                    id="microsoft-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- Nissan -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Nissan" class="img-fluid"
+                                                    id="nissan-logo">
+                                            </div>
+                                        </div>
+
+                                        <!-- TCS -->
+                                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
+                                            <div class="logo-card">
+                                                <img src="/api/placeholder/150/70" alt="Tata Consultancy Services"
+                                                    class="img-fluid" id="tcs-logo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--End-->
+                                <div class="container">
+                                    <h1 class="section-title">Excellence in Education</h1>
+
+                                    <div class="filter-controls">
+                                        <button class="filter-btn active" data-filter="all">All Rankings</button>
+                                        <button class="filter-btn" data-filter="national">National</button>
+                                        <button class="filter-btn" data-filter="international">International</button>
+                                        <button class="filter-btn" data-filter="accreditation">Accreditations</button>
+                                    </div>
+
+                                    <div class="rankings-grid">
+                                        <!-- Card 1: 7th Ranked University -->
+                                        <div class="ranking-card" data-category="national">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/ranking-group-2023.svg"
+                                                    alt="7th Ranked University">
+                                            </div>
+                                            <div class="ranking-value">#7</div>
+                                            <div class="ranking-title">Top Ranked University</div>
+                                            <div class="ranking-subtitle">Ranked 7th among all universities in India
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 2: A++ Grade -->
+                                        <div class="ranking-card" data-category="national">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/ranking-group-01-03.svg"
+                                                    alt="A++ Grade">
+                                            </div>
+                                            <div class="ranking-value">A++</div>
+                                            <div class="ranking-title">NAAC Accreditation</div>
+                                            <div class="ranking-subtitle">Highest grade awarded for academic excellence
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3: Impact Ranking -->
+                                        <div class="ranking-card" data-category="international">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/impact-ranking-2024.svg"
+                                                    alt="Impact Ranking">
+                                            </div>
+                                            <div class="ranking-value">#1 in India</div>
+                                            <div class="ranking-title">Impact Rankings</div>
+                                            <div class="ranking-subtitle">Top 81 globally for sustainable development
+                                                impact</div>
+                                        </div>
+
+                                        <!-- Card 4: International Outlook -->
+                                        <div class="ranking-card" data-category="international">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg"
+                                                    alt="International Outlook">
+                                            </div>
+                                            <div class="ranking-value">#1 in India</div>
+                                            <div class="ranking-title">International Outlook</div>
+                                            <div class="ranking-subtitle">Leading global perspective in higher education
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 5: International Faculty -->
+                                        <div class="ranking-card" data-category="international">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg"
+                                                    alt="International Faculty">
+                                            </div>
+                                            <div class="ranking-value">#1 in India</div>
+                                            <div class="ranking-title">International Faculty</div>
+                                            <div class="ranking-subtitle">Highest ratio of international educators</div>
+                                        </div>
+
+                                        <!-- Card 6: Institution of Eminence -->
+                                        <div class="ranking-card" data-category="national">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-03.svg"
+                                                    alt="Institution of Eminence">
+                                            </div>
+                                            <div class="ranking-value">IoE</div>
+                                            <div class="ranking-title">Institution of Eminence</div>
+                                            <div class="ranking-subtitle">Recognized by Government of India for
+                                                outstanding quality</div>
+                                        </div>
+
+                                        <!-- Card 7: NBA - Coimbatore Campus -->
+                                        <div class="ranking-card" data-category="accreditation">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/category-01.svg"
+                                                    alt="NBA Coimbatore">
+                                            </div>
+                                            <div class="ranking-title">NBA Accredited</div>
+                                            <div class="ranking-subtitle">School of Engineering, Coimbatore Campus</div>
+                                        </div>
+
+                                        <!-- Card 8: NBA - Amritapuri Campus -->
+                                        <div class="ranking-card" data-category="accreditation">
+                                            <div class="ranking-icon">
+                                                <img src="https://spotlight.amrita.edu/btech/img/nba.svg"
+                                                    alt="NBA Amritapuri">
+                                            </div>
+                                            <div class="ranking-title">NBA Accredited</div>
+                                            <div class="ranking-subtitle">School of Engineering, Amritapuri Campus</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
                             </div>
-                            
                         </div>
-                        <div class="container my-5">
-                            <div class="row justify-content-center">
-                                <div class="col-12 text-center mb-4">
-                                    <h2 class="placement-title">Our Corporate Placements</h2>
-                                    <p class="text-muted">Trusted by leading companies worldwide</p>
-                                </div>
-        
-                                <!-- Amazon -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Amazon" class="img-fluid" id="amazon-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Google -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Google" class="img-fluid" id="google-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Arista Networks -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Arista Networks" class="img-fluid"
-                                            id="arista-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Atlassian -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Atlassian" class="img-fluid"
-                                            id="atlassian-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Bosch -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Bosch" class="img-fluid" id="bosch-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Cisco -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Cisco" class="img-fluid" id="cisco-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Ericsson -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Ericsson" class="img-fluid" id="ericsson-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Zoho -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Zoho" class="img-fluid" id="zoho-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- IBM -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="IBM" class="img-fluid" id="ibm-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Infosys -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Infosys" class="img-fluid" id="infosys-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- McKinsey & Company -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="McKinsey & Company" class="img-fluid"
-                                            id="mckinsey-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Mindtree -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Mindtree" class="img-fluid" id="mindtree-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Microsoft -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Microsoft" class="img-fluid"
-                                            id="microsoft-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- Nissan -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Nissan" class="img-fluid" id="nissan-logo">
-                                    </div>
-                                </div>
-        
-                                <!-- TCS -->
-                                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4">
-                                    <div class="logo-card">
-                                        <img src="/api/placeholder/150/70" alt="Tata Consultancy Services" class="img-fluid"
-                                            id="tcs-logo">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-<!--End-->
-<div class="container">
-    <h1 class="section-title">Excellence in Education</h1>
-    
-    <div class="filter-controls">
-      <button class="filter-btn active" data-filter="all">All Rankings</button>
-      <button class="filter-btn" data-filter="national">National</button>
-      <button class="filter-btn" data-filter="international">International</button>
-      <button class="filter-btn" data-filter="accreditation">Accreditations</button>
-    </div>
-    
-    <div class="rankings-grid">
-      <!-- Card 1: 7th Ranked University -->
-      <div class="ranking-card" data-category="national">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-2023.svg" alt="7th Ranked University">
-        </div>
-        <div class="ranking-value">#7</div>
-        <div class="ranking-title">Top Ranked University</div>
-        <div class="ranking-subtitle">Ranked 7th among all universities in India</div>
-      </div>
-      
-      <!-- Card 2: A++ Grade -->
-      <div class="ranking-card" data-category="national">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-01-03.svg" alt="A++ Grade">
-        </div>
-        <div class="ranking-value">A++</div>
-        <div class="ranking-title">NAAC Accreditation</div>
-        <div class="ranking-subtitle">Highest grade awarded for academic excellence</div>
-      </div>
-      
-      <!-- Card 3: Impact Ranking -->
-      <div class="ranking-card" data-category="international">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/impact-ranking-2024.svg" alt="Impact Ranking">
-        </div>
-        <div class="ranking-value">#1 in India</div>
-        <div class="ranking-title">Impact Rankings</div>
-        <div class="ranking-subtitle">Top 81 globally for sustainable development impact</div>
-      </div>
-      
-      <!-- Card 4: International Outlook -->
-      <div class="ranking-card" data-category="international">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg" alt="International Outlook">
-        </div>
-        <div class="ranking-value">#1 in India</div>
-        <div class="ranking-title">International Outlook</div>
-        <div class="ranking-subtitle">Leading global perspective in higher education</div>
-      </div>
-      
-      <!-- Card 5: International Faculty -->
-      <div class="ranking-card" data-category="international">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-02.svg" alt="International Faculty">
-        </div>
-        <div class="ranking-value">#1 in India</div>
-        <div class="ranking-title">International Faculty</div>
-        <div class="ranking-subtitle">Highest ratio of international educators</div>
-      </div>
-      
-      <!-- Card 6: Institution of Eminence -->
-      <div class="ranking-card" data-category="national">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/ranking-group-02-03.svg" alt="Institution of Eminence">
-        </div>
-        <div class="ranking-value">IoE</div>
-        <div class="ranking-title">Institution of Eminence</div>
-        <div class="ranking-subtitle">Recognized by Government of India for outstanding quality</div>
-      </div>
-      
-      <!-- Card 7: NBA - Coimbatore Campus -->
-      <div class="ranking-card" data-category="accreditation">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/category-01.svg" alt="NBA Coimbatore">
-        </div>
-        <div class="ranking-title">NBA Accredited</div>
-        <div class="ranking-subtitle">School of Engineering, Coimbatore Campus</div>
-      </div>
-      
-      <!-- Card 8: NBA - Amritapuri Campus -->
-      <div class="ranking-card" data-category="accreditation">
-        <div class="ranking-icon">
-          <img src="https://spotlight.amrita.edu/btech/img/nba.svg" alt="NBA Amritapuri">
-        </div>
-        <div class="ranking-title">NBA Accredited</div>
-        <div class="ranking-subtitle">School of Engineering, Amritapuri Campus</div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-  
-
                     </div>
+
 
                 </div>
             </div>
             <div class="row ftco-section  " style="padding-left: 100px;">
-            
 
-                    <div class="container-fluid" id="contact">
-                      <div class="row">
-                  
+
+                <div class="container-fluid" id="contact">
+                    <div class="row">
+
                         <!-- Contact Info -->
                         <div class="col-lg-4 col-md-12 pt-4 text-dark">
-                          <a href="index.html" class="d-flex align-items-center mb-2">
-                            <span class="h5 mb-0">Contact us</span>
-                          </a>
-                          <p>How can we help you?</p>
-                          <p><strong>Phone:</strong> 04448133323 / 0476 280 5280</p>
-                          <p><strong>Email:</strong> ugadmissions@amrita.edu</p>
-                          <div class="d-flex mt-3">
-                            <a href="https://twitter.com/AMRITAedu" class="mr-3 text-dark"><i class="bi bi-twitter"></i></a>
-                            <a href="https://www.facebook.com/AmritaUniversity" class="mr-3 text-dark"><i class="bi bi-facebook"></i></a>
-                            <a href="https://www.youtube.com/user/AmritaUniversity" class="mr-3 text-dark"><i class="bi bi-youtube"></i></a>
-                            <a href="https://www.linkedin.com/school/amrita-vishwa-vidyapeetham-official/" class="text-dark"><i class="bi bi-linkedin"></i></a>
-                          </div>
+                            <a href="index.html" class="d-flex align-items-center mb-2">
+                                <span class="h5 mb-0">Contact us</span>
+                            </a>
+                            <p>How can we help you?</p>
+                            <p><strong>Phone:</strong> 04448133323 / 0476 280 5280</p>
+                            <p><strong>Email:</strong> ugadmissions@amrita.edu</p>
+                            <div class="d-flex mt-3">
+                                <a href="https://twitter.com/AMRITAedu" class="mr-3 text-dark"><i
+                                        class="bi bi-twitter"></i></a>
+                                <a href="https://www.facebook.com/AmritaUniversity" class="mr-3 text-dark"><i
+                                        class="bi bi-facebook"></i></a>
+                                <a href="https://www.youtube.com/user/AmritaUniversity" class="mr-3 text-dark"><i
+                                        class="bi bi-youtube"></i></a>
+                                <a href="https://www.linkedin.com/school/amrita-vishwa-vidyapeetham-official/"
+                                    class="text-dark"><i class="bi bi-linkedin"></i></a>
+                            </div>
                         </div>
-                  
+
                         <!-- Campus Addresses -->
                         <div class="col-lg-8 col-md-12 pt-5">
-                          <div class="row text-dark">
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Amritapuri</h5>
-                              <p  style="font-size: 12px;">
-                                Amrita Vishwa Vidyapeetham<br>
-                                Amritapuri Campus<br>
-                                Amritapuri, Clappana P. O.<br>
-                                Kollam - 690525<br>
-                                Kerala, India
-                              </p>
+                            <div class="row text-dark">
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Amritapuri</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita Vishwa Vidyapeetham<br>
+                                        Amritapuri Campus<br>
+                                        Amritapuri, Clappana P. O.<br>
+                                        Kollam - 690525<br>
+                                        Kerala, India
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Mysuru</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita Vishwa Vidyapeetham<br>
+                                        Mysuru Campus<br>
+                                        Mysuru – 570 026<br>
+                                        #114, 7th Main Bogadi II Stage,<br>
+                                        Karnataka, India
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Coimbatore</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita Vishwa Vidyapeetham<br>
+                                        Coimbatore Campus<br>
+                                        Amritanagar<br>
+                                        Coimbatore - 641 112<br>
+                                        Tamilnadu, India
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Kochi</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita Vishwa Vidyapeetham<br>
+                                        Kochi Campus<br>
+                                        Brahmasthanam, Edappally North P.O.<br>
+                                        Kochi - 682024<br>
+                                        Kerala, India
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Kochi (Medical)</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita School of Medicine<br>
+                                        Amrita Centre For Allied Health Sciences<br>
+                                        AIMS, Ponnekkara P.O.<br>
+                                        Kochi - 682041<br>
+                                        Kerala
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <h5>Faridabad</h5>
+                                    <p style="font-size: 12px;">
+                                        Amrita Hospital<br>
+                                        Mata Amritanandamayi Marg<br>
+                                        Sector 88, Faridabad<br>
+                                        Haryana - 121002, India
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Mysuru</h5>
-                              <p style="font-size: 12px;">
-                                Amrita Vishwa Vidyapeetham<br>
-                                Mysuru Campus<br>
-                                Mysuru – 570 026<br>
-                                #114, 7th Main Bogadi II Stage,<br>
-                                Karnataka, India
-                              </p>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Coimbatore</h5>
-                              <p style="font-size: 12px;">
-                                Amrita Vishwa Vidyapeetham<br>
-                                Coimbatore Campus<br>
-                                Amritanagar<br>
-                                Coimbatore - 641 112<br>
-                                Tamilnadu, India
-                              </p>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Kochi</h5>
-                              <p style="font-size: 12px;">
-                                Amrita Vishwa Vidyapeetham<br>
-                                Kochi Campus<br>
-                                Brahmasthanam, Edappally North P.O.<br>
-                                Kochi - 682024<br>
-                                Kerala, India
-                              </p>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Kochi (Medical)</h5>
-                              <p style="font-size: 12px;">
-                                Amrita School of Medicine<br>
-                                Amrita Centre For Allied Health Sciences<br>
-                                AIMS, Ponnekkara P.O.<br>
-                                Kochi - 682041<br>
-                                Kerala
-                              </p>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-3">
-                              <h5>Faridabad</h5>
-                              <p style="font-size: 12px;">
-                                Amrita Hospital<br>
-                                Mata Amritanandamayi Marg<br>
-                                Sector 88, Faridabad<br>
-                                Haryana - 121002, India
-                              </p>
-                            </div>
-                          </div>
                         </div>
-                  
-                      </div>
+
                     </div>
-                  
-                    <div class="container-fluid mt-4">
-                      <div class="text-center py-2 border-top">
+                </div>
+
+                <div class="container-fluid mt-4">
+                    <div class="text-center py-2 border-top">
                         <small>© <strong>2023 E-Governance</strong> Amritapuri Campus</small>
-                      </div>
                     </div>
-                  
-              
-                  
+                </div>
+
+
+
             </div>
         </div>
     </div>
@@ -2318,160 +1028,8 @@
 
 
     <!--Abhi Created-->
-    <script>
-        lucide.createIcons();
-        window.addEventListener('scroll', function () {
-            const heading = document.getElementById('navbar-heading');
-            const logo = document.querySelector('.img-log');
+    <script src="js/script.js">
 
-            if (window.scrollY > 10) {
-                heading.style.color = 'black';
-                logo.src = 'assets/amrita _logo.svg';
-            } else {
-                heading.style.color = 'white';
-                logo.src = 'assets/amrita _logo.png';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('menu-toggle');
-            const dropdown = document.querySelector('.dropdown-mobile');
-
-            toggleBtn.addEventListener('click', () => {
-                dropdown.classList.toggle('active');
-            });
-        });
-
-        $('#v-pills-amritapuri-tab').on('click', function () {
-            setTimeout(function () {
-                $('html, body').animate({
-                    scrollTop: $('#v-pills-amritapuri').offset().top
-                }, 500); // 500ms scroll duration
-            }, 100);
-        });
-
- // Updated logo URLs with the specified location
- const logoUrls = {
-      'amazon-logo': 'https://spotlight.amrita.edu/btech/img/amazon.svg',
-      'google-logo': 'https://spotlight.amrita.edu/btech/img/google.svg',
-      'arista-logo': 'https://spotlight.amrita.edu/btech/img/arista-logo.svg',
-      'atlassian-logo': 'https://spotlight.amrita.edu/btech/img/atlassian.svg',
-      'bosch-logo': 'https://spotlight.amrita.edu/btech/img/bosch.svg',
-      'cisco-logo': 'https://spotlight.amrita.edu/btech/img/cisco.svg',
-      'ericsson-logo': 'https://spotlight.amrita.edu/btech/img/ericsson.svg',
-      'zoho-logo': 'https://spotlight.amrita.edu/btech/img/zoho.svg',
-      'ibm-logo': 'https://spotlight.amrita.edu/btech/img/ibm.svg',
-      'infosys-logo': 'https://spotlight.amrita.edu/btech/img/infosys.svg',
-      'mckinsey-logo': 'https://spotlight.amrita.edu/btech/img/mck.svg',
-      'mindtree-logo': 'https://spotlight.amrita.edu/btech/img/mf.svg',
-      'microsoft-logo': 'https://spotlight.amrita.edu/btech/img/microsoft.svg',
-      'nissan-logo': 'https://spotlight.amrita.edu/btech/img/nissan.svg',
-      'tcs-logo': 'https://spotlight.amrita.edu/btech/img/tcs.svg'
-    };
-
-    // Function to load images with fallback
-    function loadImageWithFallback(imgId, imgUrl) {
-      const img = document.getElementById(imgId);
-      if (!img) return;
-      
-      const tempImg = new Image();
-      tempImg.onload = function() {
-        img.src = imgUrl;
-      };
-      
-      tempImg.onerror = function() {
-        console.log('Failed to load image:', imgUrl);
-        // Keep the placeholder image
-      };
-      
-      tempImg.src = imgUrl;
-    }
-
-    // Load all images when document is ready
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add fade-in animation to cards
-      const cards = document.querySelectorAll('.logo-card');
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-
-      // Load images with fallback to placeholder
-      for (const [id, url] of Object.entries(logoUrls)) {
-        loadImageWithFallback(id, url);
-      }
-    });
-
-    // Add a simple filter functionality
-    window.filterLogos = function(searchTerm) {
-      const cards = document.querySelectorAll('.logo-card');
-      const term = searchTerm.toLowerCase();
-      
-      cards.forEach(card => {
-        const altText = card.querySelector('img').getAttribute('alt').toLowerCase();
-        const parent = card.closest('.col-lg-2');
-        
-        if (altText.includes(term) || term === '') {
-          parent.style.display = 'block';
-        } else {
-          parent.style.display = 'none';
-        }
-      });
-    };
-    document.addEventListener('DOMContentLoaded', function() {
-      // Filter functionality
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const rankingCards = document.querySelectorAll('.ranking-card');
-      
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          const filterValue = this.getAttribute('data-filter');
-          
-          // Show/hide cards based on filter
-          rankingCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.style.display = 'flex';
-              setTimeout(() => {
-                card.style.opacity = 1;
-                card.style.transform = 'translateY(0)';
-              }, 10);
-            } else {
-              if (card.getAttribute('data-category') === filterValue) {
-                card.style.display = 'flex';
-                setTimeout(() => {
-                  card.style.opacity = 1;
-                  card.style.transform = 'translateY(0)';
-                }, 10);
-              } else {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                  card.style.display = 'none';
-                }, 300);
-              }
-            }
-          });
-        });
-      });
-
-      // Removed card hover effects from JavaScript
-      // Only kept filtering functionality
-      
-      // Initialize with all cards visible
-      filterButtons[0].click();
-    });
     </script>
 
 </body>
